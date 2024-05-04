@@ -1,0 +1,18 @@
+{% load wagtailcore_tags navigation_tags wagtailuserbar %}
+
+<header>
+    {% get_site_root as site_root %}
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+        <a class="nav-link" href="{% pageurl site_root %}">{{ site_root.title }}</a></li>
+        {% for menuitem in site_root.get_children.live.in_menu %}
+        <li class="nav-item"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %}{% endif %}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    </nav>
+    {# Add wagtailuserbar: #}
+    {% wagtailuserbar "top-right" %}
+</header>
