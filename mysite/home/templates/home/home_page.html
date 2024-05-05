@@ -4,15 +4,17 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <div>
-        <h1>{{ page.title }}</h1>
-        {% image page.image fill-480x320 %}
-        <p>{{ page.hero_text }}</p>
+    <div class="container my-5">
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+        <h1 class="text-body-emphasis">{{ page.title }}</h1>
+        {% image page.image fill-480x320 class="mt-4 mb-3" %}
+        <p class="lead">{{ page.hero_text }}</p>
         {% if page.hero_cta_link %}
             <a href="{% pageurl page.hero_cta_link %}">
                 {% firstof page.hero_cta page.hero_cta_link.title %}
             </a>
         {% endif %}
+        </div>
     </div>
 
   {{ page.body|richtext }}

@@ -1,7 +1,7 @@
 {# Load navigation_tags at the top of the file: #}
 {% load navigation_tags %}
-
-<footer>
+<div class="container">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p>Built with Wagtail</p>
 
     {% with twitter_url=settings.base.NavigationSettings.twitter_url github_url=settings.base.NavigationSettings.github_url mastodon_url=settings.base.NavigationSettings.mastodon_url %}
@@ -24,3 +24,4 @@
     {# Add footer_text: #}
     {% get_footer_text %}
 </footer>
+</div>

@@ -5,11 +5,11 @@
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
+    <h1 class="display-5 text-body-emphasis mb-1">{{ page.title }}</h1>
     <p class="meta">{{ page.date }}</p>
     {% with authors=page.authors.all %}
     {% if authors %}
-        <h3>Posted by:</h3>
+        <p class="lead">Posted by:</p>
         <ul>
             {% for author in authors %}
                 <li style="display: inline">

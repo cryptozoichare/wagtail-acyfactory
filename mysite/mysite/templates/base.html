@@ -32,8 +32,10 @@
     </head>
     <body class="bg-body-secondary {% block body_class %}{% endblock %}">
         {% include "includes/header.html" %}
-        <main class="container bg-body">
+        <main class="container">
+            <div class="col bg-body p-3">
         {% block content %}{% endblock %}
+            </div>
         {% include "includes/footer.html" %}
     </main>
         {# Global javascript #}
