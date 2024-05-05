@@ -2,7 +2,7 @@ from django.db import models
 from django.views.generic.detail import DetailView
 
 # import parentalKey:
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 
 # import FieldRowPanel and InlinePanel:
 from wagtail.admin.panels import (
@@ -23,7 +23,7 @@ from wagtail.models import (
 )
 
 # import AbstractEmailForm and AbstractFormField:
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField, AbstractFormSubmission
+from wagtail.contrib.forms.models import AbstractForm, AbstractFormField, AbstractFormSubmission
 
 from wagtail.search import index
 
@@ -41,29 +41,29 @@ class FormField(AbstractFormField):
     page = ParentalKey('GuestbookPage', on_delete=models.CASCADE, related_name='form_fields')
 
 
-class GuestbookPage(AbstractEmailForm):
+class GuestbookPage(AbstractForm, Page):
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
-    context_object_name = "submissions"
 
-    content_panels = AbstractEmailForm.content_panels + [
+    content_panels = AbstractForm.content_panels + [
         FormSubmissionsPanel(),
         FieldPanel('intro'),
         InlinePanel('form_fields', label="Form fields"),
         FieldPanel('thank_you_text'),
-        MultiFieldPanel([
-            FieldRowPanel([
-                FieldPanel('from_address'),
-                FieldPanel('to_address'),
-            ]),
-            FieldPanel('subject'),
-        ], "Email"),
     ]
-
-
-class GuestbookComments(DetailView):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+
+        # Retrieve all form submissions for the current page
         submissions = self.get_submission_class().objects.filter(page=self)
-        context['submissions'] = submissions
+
+        # Extract raw form data from submissions
+        raw_data = []
+        for submission in submissions:
+            raw_data.append(submission.get_data())
+
+        # Add raw form data to the context
+        context.update({
+            'raw_data': raw_data,
+        })
         return context

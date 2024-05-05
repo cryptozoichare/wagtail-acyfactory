@@ -1,5 +1,6 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
+from wagtail.models import Page
 from wagtail.admin.panels import (
     FieldPanel,
     FieldRowPanel,
@@ -92,4 +93,22 @@ class FormPage(AbstractEmailForm):
             ]),
             FieldPanel('subject'),
         ], "Email"),
+    ]
+
+class NormalPage(Page):
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",)
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel("image"),
+            ],
+        ),
+        FieldPanel('body'),
     ]

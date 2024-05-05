@@ -8,8 +8,18 @@
     <div>{{ page.intro|richtext }}</div>
 
 
-<p>{{ object.name }}</p>
-
+    <h2>Raw Form Data:</h2>
+    <ul>
+        {% for submission_data in raw_data %}
+            <li>
+                <ul>
+                    {% for field, value in submission_data.items %}
+                        <li>{{ field }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 
 
     <form class="page-form" action="{% pageurl page %}" method="POST">

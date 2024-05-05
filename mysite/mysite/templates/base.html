@@ -32,10 +32,11 @@
     </head>
     <body class="bg-body-secondary {% block body_class %}{% endblock %}">
         {% include "includes/header.html" %}
-        <main class="container">
-            <div class="col bg-body p-3">
+        <main class="container-fluid">
+            <div class="row justify-content-center">
+            <div class="col-8 bg-body p-4">
         {% block content %}{% endblock %}
-            </div>
+            </div></div>
         {% include "includes/footer.html" %}
     </main>
         {# Global javascript #}
