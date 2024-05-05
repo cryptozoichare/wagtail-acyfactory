@@ -54,16 +54,26 @@ class GuestbookPage(AbstractForm, Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        # Retrieve all form submissions for the current page
+        # Get all submissions for current page
         submissions = self.get_submission_class().objects.filter(page=self)
+        guestbook_entries = []
 
-        # Extract raw form data from submissions
-        raw_data = []
         for submission in submissions:
-            raw_data.append(submission.get_data())
+            data = submission.get_data()
 
-        # Add raw form data to the context
+            name = data.get('name')
+            url = data.get('url')
+            comment = data.get('comment')
+            date = data.get('submit_time')
+
+            guestbook_entries.append({
+                'name': name,
+                'url': url,
+                'comment': comment,
+                'date': date
+            })
+
         context.update({
-            'raw_data': raw_data,
+            'guestbook_entries': guestbook_entries,
         })
         return context

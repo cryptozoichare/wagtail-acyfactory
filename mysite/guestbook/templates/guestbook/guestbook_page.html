@@ -1,30 +1,33 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load wagtailcore_tags %}
 
-{% block body_class %}template-guestbookpage{% endblock %}
+{% block body_class %}
+  template-guestbookpage
+{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <div>{{ page.intro|richtext }}</div>
+  <h1>{{ page.title }}</h1>
+  <div>{{ page.intro|richtext }}</div>
 
+  {% if guestbook_entries %}
+    {% for entry in guestbook_entries %}
+      <ul class="list-group list-group-flush">
+        {% if entry.url %}
+          <li class="list-group-item">
+            <a href="{{ entry.url }}">{{ entry.name }}</a>: {{ entry.comment }}
+          </li>
+        {% else %}
+          <li class="list-group-item">{{ entry.name }}: {{ entry.comment }}</li>
+        {% endif %}
+      </ul>
+    {% endfor %}
+  {% else %}
+    <p>No entries found.</p>
+  {% endif %}
 
-    <h2>Raw Form Data:</h2>
-    <ul>
-        {% for submission_data in raw_data %}
-            <li>
-                <ul>
-                    {% for field, value in submission_data.items %}
-                        <li>{{ field }}: {{ value }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-
-
-    <form class="page-form" action="{% pageurl page %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <button type="Submit">Submit</button>
-    </form>
-{% endblock content %}
+  <form class="page-form" action="{% pageurl page %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button class="btn" type="Submit">Submit</button>
+  </form>
+{% endblock %}
