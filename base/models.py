@@ -26,6 +26,7 @@ from wagtail.contrib.settings.models import (
     register_setting,
 )
 
+from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail.snippets.models import register_snippet
 
 @register_setting
@@ -112,3 +113,23 @@ class NormalPage(Page):
         ),
         FieldPanel('body'),
     ]
+    
+class CustomImage(AbstractImage):
+    # Add any extra fields to image here
+
+    # To add a caption field:
+    # caption = models.CharField(max_length=255, blank=True)
+
+    admin_form_fields = Image.admin_form_fields + (
+        # Then add the field names here to make them appear in the form:
+        # 'caption',
+    )
+
+
+class CustomRendition(AbstractRendition):
+    image = models.ForeignKey(CustomImage, on_delete=models.CASCADE, related_name='renditions')
+
+    class Meta:
+        unique_together = (
+            ('image', 'filter_spec', 'focal_point_key'),
+        )

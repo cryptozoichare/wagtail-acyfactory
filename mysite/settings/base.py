@@ -189,3 +189,4 @@ WAGTAILADMIN_BASE_URL = "https://acyfactory.nfshost.com"
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 AUTH_USER_MODEL = 'users.User'
+WAGTAILIMAGES_IMAGE_MODEL = 'base.CustomImage'
