@@ -10,8 +10,11 @@
         {% for menuitem in site_root.get_children.live.in_menu %}
         <li class="nav-item"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %}{% endif %}</li>
         {% endfor %}
-        <li class="nav-item"><a class="nav-link" href="/search/">Search</a></li>
         </ul>
+        <form class="d-flex" action="{% url 'search' %}" method="get">
+            <input class="form-control me-sm-2" type="search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">Search</button>
+          </form>
     </div>
     </nav>
     {# Add wagtailuserbar: #}

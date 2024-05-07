@@ -26,6 +26,7 @@ from wagtail.contrib.settings.models import (
     register_setting,
 )
 
+from crispy_forms.helper import FormHelper
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail.documents.models import Document, AbstractDocument
 from wagtail.snippets.models import register_snippet

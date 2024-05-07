@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags crispy_forms_tags honeypot %}
 
 {% block body_class %}
   template-guestbookpage
@@ -9,25 +9,31 @@
   <h1>{{ page.title }}</h1>
   <div>{{ page.intro|richtext }}</div>
 
+
+<div class="col-lg-6">
+  <form class="page-form" action="{% pageurl page %}" method="POST">
+    {% csrf_token %}
+    {% render_honeypot_field "email" %}
+    {{ form|crispy }}
+    <button class="btn btn-primary" type="Submit">Submit</button>
+  </form>
+</div>
+  <hr>
   {% if guestbook_entries %}
-    {% for entry in guestbook_entries %}
-      <ul class="list-group list-group-flush">
+    {% for entry in guestbook_entries reversed %}
+    <div class="card mt-3">
         {% if entry.url %}
-          <li class="list-group-item">
-            <a href="{{ entry.url }}">{{ entry.name }}</a>: {{ entry.comment }}
-          </li>
+        <div class="card-header">
+          <a href="{{ entry.url }}">{{ entry.name }}</a> at {{ entry.date }}</div> 
         {% else %}
-          <li class="list-group-item">{{ entry.name }}: {{ entry.comment }}</li>
+        <div class="card-header">
+          {{ entry.name }} at {{ entry.date }}</div> 
         {% endif %}
-      </ul>
+        <div class="card-body">
+          {{ entry.comment }}</div></div>
     {% endfor %}
+
   {% else %}
     <p>No entries found.</p>
   {% endif %}
-
-  <form class="page-form" action="{% pageurl page %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button class="btn" type="Submit">Submit</button>
-  </form>
 {% endblock %}

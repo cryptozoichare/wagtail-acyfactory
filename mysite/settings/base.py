@@ -26,6 +26,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "users",
     "base",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "honeypot",
     "portfolio",
     "guestbook",
     "blog",
@@ -58,6 +61,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "honeypot.middleware.HoneypotViewMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -191,3 +195,8 @@ WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'tx
 AUTH_USER_MODEL = 'users.User'
 WAGTAILIMAGES_IMAGE_MODEL = 'base.CustomImage'
 WAGTAILDOCS_DOCUMENT_MODEL = 'base.CustomDocument'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+HONEYPOT_FIELD_NAME = "email"

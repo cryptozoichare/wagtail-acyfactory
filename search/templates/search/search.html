@@ -7,12 +7,12 @@
 
 {% block content %}
 <h1>Search</h1>
-
-<form action="{% url 'search' %}" method="get">
-    <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-    <input type="submit" value="Search" class="button">
+<div class="mb-3">
+<form class="d-flex" action="{% url 'search' %}" method="get">
+    <input class="form-control me-sm-2" type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+    <input type="submit" value="Search" class="btn btn-primary">
 </form>
-
+</div>
 {% if search_results %}
 
 {# Add this paragraph to display the details of results found: #}
@@ -22,7 +22,7 @@
 <ol>
     {% for result in search_results %}
     <li>
-        <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
+        <a href="{% pageurl result %}">{{ result }}</a>
         {% if result.search_description %}
         {{ result.search_description }}
         {% endif %}
