@@ -27,6 +27,7 @@ from wagtail.contrib.settings.models import (
 )
 
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from wagtail.documents.models import Document, AbstractDocument
 from wagtail.snippets.models import register_snippet
 
 @register_setting
@@ -133,3 +134,16 @@ class CustomRendition(AbstractRendition):
         unique_together = (
             ('image', 'filter_spec', 'focal_point_key'),
         )
+        
+class CustomDocument(AbstractDocument):
+    # Custom field example:
+    source = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
+    )
+
+    admin_form_fields = Document.admin_form_fields + (
+        # Add all custom fields names to make them appear in the form:
+        'source',
+    )

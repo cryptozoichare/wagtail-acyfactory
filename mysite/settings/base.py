@@ -190,3 +190,4 @@ WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'tx
 
 AUTH_USER_MODEL = 'users.User'
 WAGTAILIMAGES_IMAGE_MODEL = 'base.CustomImage'
+WAGTAILDOCS_DOCUMENT_MODEL = 'base.CustomDocument'
