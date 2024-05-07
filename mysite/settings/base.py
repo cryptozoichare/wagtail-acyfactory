@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    "users",
     "base",
     "portfolio",
     "guestbook",
@@ -187,6 +188,4 @@ WAGTAILADMIN_BASE_URL = "https://acyfactory.nfshost.com"
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+AUTH_USER_MODEL = 'users.User'
