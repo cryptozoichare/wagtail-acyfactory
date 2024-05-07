@@ -10,9 +10,10 @@
         {% for menuitem in site_root.get_children.live.in_menu %}
         <li class="nav-item"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %}{% endif %}</li>
         {% endfor %}
+        <li class="nav-item"><a class="nav-link" href="/search/">Search</a></li>
         </ul>
     </div>
     </nav>
     {# Add wagtailuserbar: #}
-    {% wagtailuserbar "top-right" %}
+    {% wagtailuserbar "bottom-right" %}
 </header>
