@@ -28,8 +28,6 @@ INSTALLED_APPS = [
     "base",
     "crispy_forms",
     "crispy_bootstrap5",
-    "honeypot",
-    "portfolio",
     "guestbook",
     "blog",
     "home",

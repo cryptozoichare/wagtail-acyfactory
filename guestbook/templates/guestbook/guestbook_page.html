@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags crispy_forms_tags honeypot %}
+{% load wagtailcore_tags crispy_forms_tags %}
 
 {% block body_class %}
   template-guestbookpage
@@ -13,7 +13,6 @@
 <div class="col-lg-6">
   <form class="page-form" action="{% pageurl page %}" method="POST">
     {% csrf_token %}
-    {% render_honeypot_field "email" %}
     {{ form|crispy }}
     <button class="btn btn-primary" type="Submit">Submit</button>
   </form>
