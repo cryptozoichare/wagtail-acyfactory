@@ -39,7 +39,6 @@ class BlogPage(Page):
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
-    authors = ParentalManyToManyField('blog.Author', blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     def main_image(self):
         gallery_item = self.gallery_images.first()
@@ -56,7 +55,6 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('date'),
-            FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags'),
         ], heading="Blog information"),
         FieldPanel('intro'),
@@ -76,24 +74,7 @@ class BlogPageGalleryImage(Orderable):
         FieldPanel('caption'),
     ]
 
-@register_snippet
-class Author(models.Model):
-    name = models.CharField(max_length=255)
-    author_image = models.ForeignKey(
-        'wagtailimages.Image', null=True, blank=True,
-        on_delete=models.SET_NULL, related_name='+'
-    )
 
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('author_image'),
-    ]
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = 'Authors'
 
 class BlogTagIndexPage(Page):
 
