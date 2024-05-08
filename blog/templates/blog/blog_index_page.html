@@ -10,16 +10,15 @@
     <div class="intro">{{ page.intro|richtext }}</div>
 
     {% for post in blogpages %}
-    {% with post=post.specific %}
-    <section>
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-        {% with post.main_image as main_image %}
-        {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
-    {% endwith %}
-        <p class="lead">{{ post.intro }}</p>
-        {{ post.body|richtext }}
-    </section>
-    {% endwith %}
-{% endfor %}
+        {% with post=post.specific %}
+            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+
+            {% with post.main_image as main_image %}
+                {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+            {% endwith %}
+
+            <p>{{ post.intro }}</p>
+        {% endwith %}
+    {% endfor %}
 
 {% endblock %}

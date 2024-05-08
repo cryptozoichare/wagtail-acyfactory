@@ -12,6 +12,9 @@
                 {% firstof page.hero_cta page.hero_cta_link.title %}
             </a>
         {% endif %}
-
+        {% for blogpage in blogpages|slice:"-5:" %}
+        <!-- Display post details here -->
+        {{ blogpage.title }}
+    {% endfor %}
   {{ page.body|richtext }}
 {% endblock content %}

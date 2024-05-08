@@ -5,41 +5,38 @@
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-    <h1 class="display-5 text-body-emphasis mb-1">{{ page.title }}</h1>
+    <h1>{{ page.title }}</h1>
     <p class="meta">{{ page.date }}</p>
-    {% with authors=page.authors.all %}
-    {% if authors %}
-        <p class="lead">Posted by:</p>
-        <ul>
-            {% for author in authors %}
-                <li style="display: inline">
-                    {% image author.author_image fill-40x60 style="vertical-align: middle" %}
-                    {{ author.name }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
 
-    <div class="intro">{{ page.intro }}</div>
+    {% with categories=page.categories.all %}
+        {% if categories %}
+            <h3>Posted in:</h3>
+            <ul>
+                {% for category in categories %}
+                    <li style="display: inline">
+                        {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                        {{ category.name }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
-    {{ page.body|richtext }}
-    {% for item in page.gallery_images.all %}
-    <figure class="figure">
-            {% image item.image fill-320x240 class="figure-img" %}
-            <figcaption class="figure-caption">{{ item.caption }}</figcaption>
-    </figure>
-    {% endfor %}
+    <div class="intro"><p class="lead">{{ page.intro }}</p></div>
+
+    {{ page.body }}
+
 
     <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+
     {% with tags=page.tags.all %}
-    {% if tags %}
-        <div class="tags">
-            <h3>Tags</h3>
-            {% for tag in tags %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-primary btn-sm" type="button">{{ tag }}</button></a>
-            {% endfor %}
-        </div>
-    {% endif %}
-{% endwith %}
+        {% if tags %}
+            <div class="tags">
+                <h3>Tags</h3>
+                {% for tag in tags %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-outline-primary btn-sm" type="button">{{ tag }}</button></a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 {% endblock %}
