@@ -58,7 +58,6 @@ class BlogPageTag(TaggedItemBase):
 
 
 class BlogPage(Page):
-    date = models.DateField("Date article published", blank=True, null=True)
     intro = models.TextField(help_text="Text to describe the page", blank=True)
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
@@ -74,7 +73,6 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            FieldPanel('date'),
             FieldPanel('tags'),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         ], heading="Blog information"),

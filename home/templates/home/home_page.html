@@ -1,21 +1,29 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends 'base.html' %}
 
-{% block body_class %}template-homepage{% endblock %}
+<!-- load wagtailcore_tags by adding this: -->
+{% load wagtailcore_tags %}
 
-{% block extra_css %}
+{% block body_class %}
+  template-homepage
+{% endblock %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
-{% endblock extra_css %}
-
+<!-- replace everything below with: -->
 {% block content %}
+  {{ page.body }}
+  <hr>
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col">  
+  <div class="card">
+  <h3 class="card-header">Latest Posts</h3>
+  <ul class="list-group list-group-flush">
+  {% for post in blogpages %}
+  {% with post=post.specific %}
 
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+    <li class="list-group-item"><a href="{% pageurl post %}">{{ post.title }}</a></li>
 
-{% endblock content %}
+  {% endwith %}
+{% endfor %}
+</ul>
+</div></div>
+</div>
+{% endblock %}

@@ -36,18 +36,26 @@
       {# Override this in templates to add extra stylesheets #}
     {% endblock %}
   </head>
-  <body class="bg-body-secondary {% block body_class %}
-    {% endblock %}">
+  <body class="bg-body-secondary">
     {% include 'includes/header.html' %}
-    <main class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-8 bg-body p-4 shadow-sm">
+    <div class="container-fluid">
+      <div class="row mx-auto">
+        <div class="col-lg-8">
+          <div class="bg-body p-3 shadow-sm">
           {% block content %}
+
           {% endblock %}
         </div>
+        </div>
+        <div class="col-lg-2 order-first">
+          {% include 'includes/sidebar.html' %}
+        </div>
+
+        </div>
       </div>
-      {% include 'includes/footer.html' %}
-    </main>
+    </div>
+
+    {% include 'includes/footer.html' %}
     {# Global javascript #}
     <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
 
