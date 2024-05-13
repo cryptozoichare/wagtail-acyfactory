@@ -1,0 +1,50 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Color system
+
+// scss-docs-start gray-color-variables
+$white: #fff;
+$gray-100: #f7f4f3;
+$gray-200: #ece6e4;
+$gray-300: #e2dad8;
+$gray-400: #d1c6c4;
+$gray-500: #b3a7a5;
+$gray-600: #918481;
+$gray-700: #69605e;
+$gray-800: #47403e;
+$gray-900: #2c2a2a;
+$black: #000;
+// scss-docs-end gray-color-variables
+
+
+// scss-docs-start color-variables
+$blue: #2f3a53;
+$indigo: #63528a;
+$purple: #8b6193;
+$pink: #b05774;
+$red: #a23f40;
+$orange: #da8662;
+$yellow: #dfc080;
+$green: #415b3e;
+$teal: #629b90;
+$cyan: #86d3ed;
+// scss-docs-end color-variables
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// scss-docs-start font-variables
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: "Alegreya Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-size-base: 1.25rem;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded: false;
+$enable-shadows: true;
