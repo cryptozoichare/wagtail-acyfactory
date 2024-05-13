@@ -12,6 +12,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
 from base.blocks import BaseStreamBlock
+from base.models import CustomImage
 
 
 @register_snippet
@@ -59,6 +60,14 @@ class BlogPageTag(TaggedItemBase):
 
 class BlogPage(Page):
     intro = models.TextField(help_text="Text to describe the page", blank=True)
+    image = models.ForeignKey(
+        "base.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Landscape mode only; horizontal width between 1000px and 3000px.",
+    )
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
@@ -77,6 +86,7 @@ class BlogPage(Page):
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         ], heading="Blog information"),
         FieldPanel('intro'),
+        FieldPanel("image"),
         FieldPanel('body'),
     ]
 

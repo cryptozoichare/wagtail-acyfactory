@@ -1,22 +1,15 @@
 {% load wagtailcore_tags navigation_tags wagtailuserbar %}
 
 <header class="mb-3">
-    {% get_site_root as site_root %}
-    <nav class="navbar navbar-expand-lg bg-dark shadow-sm" data-bs-theme="dark">
+    <nav class="navbar bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-        <a class="nav-link" href="{% pageurl site_root %}">{{ site_root.title }}</a></li>
-        {% for menuitem in site_root.get_children.live.in_menu %}
-        <li class="nav-item {% if menuitem.active %} active{% endif %}"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>{% if not forloop.last %}{% endif %}</li>
-        {% endfor %}
-        </ul>
-        <form class="d-flex" action="{% url 'search' %}" method="get">
-            <input class="form-control me-sm-2" type="search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">Search</button>
+          <a class="navbar-brand" href="/">Acy Factory</a>
+          <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+            <input class="form-control me-2" type="search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %} placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary btn-sm" type="submit">Search</button>
           </form>
-    </div>
-    </nav>
+        </div>
+      </nav>
     {# Add wagtailuserbar: #}
     {% wagtailuserbar "bottom-right" %}
 </header>

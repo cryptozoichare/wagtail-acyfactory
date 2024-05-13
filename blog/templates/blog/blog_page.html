@@ -20,9 +20,14 @@
             </ul>
         {% endif %}
     {% endwith %}
-
+    {% if page.image %}
+    <figure class="figure">
+        {% image page.image original class="img-fluid" alt="" %}
+    </figure>
+{% endif %}
+{% if page.intro %}
     <div class="intro"><p class="lead">{{ page.intro }}</p></div>
-
+    {% endif %}
     {{ page.body }}
 
         </article>
@@ -33,7 +38,7 @@
             <div class="tags">
                 <h3>Tags</h3>
                 {% for tag in tags %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-outline-primary btn-sm" type="button">{{ tag }}</button></a>
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-outline-info btn-sm" type="button">{{ tag }}</button></a>
                 {% endfor %}
             </div>
         {% endif %}

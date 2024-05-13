@@ -309,6 +309,3 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/django,node
-
-*.woff
-*.woff2
