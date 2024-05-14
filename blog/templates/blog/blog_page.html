@@ -1,46 +1,59 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
+{% load wagtailcore_tags i18n wagtailimages_tags static comments comments_ink crispy_forms_tags %}
+{% block extra_css %}
+<link
+    rel="stylesheet" type="text/css"
+    href="{% static 'django_comments_ink/css/comments.css' %}"
+>
+{% endblock %}
 {% block content %}
 <article>
-    <h1>{{ page.title }}</h1>
-    <p class="meta"><time>{{ page.first_published_at }}</time></p>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">
+    <time>{{ page.first_published_at }}</time>
+  </p>
 
-    {% with categories=page.categories.all %}
-        {% if categories %}
-            <h3>Posted in:</h3>
-            <ul>
-                {% for category in categories %}
-                    <li style="display: inline">
-                        {% image category.icon fill-32x32 style="vertical-align: middle" %}
-                        {{ category.name }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    {% if page.image %}
-    <figure class="figure">
-        {% image page.image original class="img-fluid" alt="" %}
-    </figure>
+  {% with categories=page.categories.all %}
+  {% if categories %}
+  <h3>Posted in:</h3>
+  <ul>
+    {% for category in categories %}
+    <li style="display: inline">{{ category.name }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  {% if page.image %}
+  <figure class="figure">
+    {% image page.image original class="img-fluid" alt="" %}
+  </figure>
+  {% endif %}
+  {% if page.intro %}
+  <div class="intro">
+    <p class="lead">{{ page.intro }}</p>
+  </div>
+  {% endif %}
+  {{ page.body }}
+</article>
+<p>
+  <a href="{{ page.get_parent.url }}">Return to blog</a>
+</p>
+
+{% with tags=page.tags.all %}
+{% if tags %}
+<div class="tags">
+  <h3>Tags</h3>
+  {% for tag in tags %}
+  <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-outline-info btn-sm"
+      type="button">{{ tag }}</button></a>
+  {% endfor %}
+</div>
 {% endif %}
-{% if page.intro %}
-    <div class="intro"><p class="lead">{{ page.intro }}</p></div>
-    {% endif %}
-    {{ page.body }}
+{% endwith %}
 
-        </article>
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
 
-    {% with tags=page.tags.all %}
-        {% if tags %}
-            <div class="tags">
-                <h3>Tags</h3>
-                {% for tag in tags %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="btn btn-outline-info btn-sm" type="button">{{ tag }}</button></a>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'django_comments_ink/dist/dci-0.3.0.js' %}"></script>
 {% endblock %}

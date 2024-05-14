@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.urls import reverse
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -89,6 +90,9 @@ class BlogPage(Page):
         FieldPanel("image"),
         FieldPanel('body'),
     ]
+    
+    def get_absolute_url(self):
+        return self.full_url
 
 
 

@@ -1,27 +1,45 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
+    <h1 class="display-1 mb-4">{{ page.title }}</h1>
 
-    {% if page.intro %}   <div class="intro">{{ page.intro|richtext }}</div>{% endif %}
-
-    {% for post in blogpages %}
-        {% with post=post.specific %}
-        <div class="d-flex">
-            <div class="flex-shrink-0">
-                {% if post.image %}{% image post.image fill-160x100 class="" %}{% endif %}
-            </div>
-            <div class="flex-grow-1 ms-3">
-                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-                <p>{{ post.intro }}</p>
-            </div>
-          </div>
-
-        {% endwith %}
+    <div class="intro">{{ page.intro|richtext }}</div>
+<ul class="list-group list-group-flush">
+    {% for post in page.get_children %}
+    {% with post=post.specific %}
+    <li class="list-group-item">
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        <div>
+        <p>{{ post.intro }}
+        {{ post.body|truncatewords:100 }}</p>
+        </div>
+        <div class="d-flex flex-row gap-3">
+          <div><time>{{ post.first_published_at }}</time></div>
+          {% with tags=post.tags.all %}
+          {% if tags %}
+              <div>
+                  {% for tag in tags %}
+                      <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
+                  {% endfor %}
+              </div>
+          {% endif %}
+      {% endwith %}
+          {% with categories=post.categories.all %}
+          {% if categories %}
+<div>
+            {% for category in categories %}
+{{ category.name }}
+            {% endfor %}
+</div>
+          {% endif %}
+          {% endwith %}
+        </div>
+      </li>
+      {% endwith %}
     {% endfor %}
-
+</ul>
 {% endblock %}

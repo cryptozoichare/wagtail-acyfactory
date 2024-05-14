@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+#    'django_comments_ink',
+#    'django_comments',
     "django.contrib.admin",
+    "django.contrib.sites",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -196,3 +199,9 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 HONEYPOT_FIELD_NAME = "email"
+
+#COMMENTS_APP = 'django_comments_ink'
+#COMMENTS_INK_MAX_THREAD_LEVEL = 1
+#COMMENTS_INK_CONFIRM_EMAIL = False
+
+SITE_ID = 1

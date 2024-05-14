@@ -11,9 +11,11 @@ from search import views as search_views
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("__debug__/", include("debug_toolbar.urls")),
+    path("comments/", include('django_comments_ink.urls')),
 ]
 
 
