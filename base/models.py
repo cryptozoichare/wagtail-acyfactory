@@ -8,7 +8,7 @@ from wagtail.admin.panels import (
     MultiFieldPanel,
     PublishingPanel,
 )
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import (
     DraftStateMixin,
     PreviewableMixin,
@@ -30,6 +30,7 @@ from crispy_forms.helper import FormHelper
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail.documents.models import Document, AbstractDocument
 from wagtail.snippets.models import register_snippet
+from base.blocks import BaseStreamBlock
 
 
 class FormField(AbstractFormField):
@@ -55,20 +56,11 @@ class FormPage(AbstractEmailForm):
     ]
 
 class NormalPage(Page):
-    image = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",)
-    body = RichTextField(blank=True)
+    body = StreamField(
+        BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
+    )
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel(
-            [
-                FieldPanel("image"),
-            ],
-        ),
         FieldPanel('body'),
     ]
     

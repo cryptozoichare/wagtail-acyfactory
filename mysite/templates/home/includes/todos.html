@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<div class="col">
+    <div class="card">
+      <h3 class="card-header">Website To-dos</h3>
+      <ul class="list-group list-group-flush">
+        {% for todo in todos %}
+        <li class="list-group-item">{{ todo.text }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>

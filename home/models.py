@@ -24,3 +24,11 @@ class HomePage(Page):
         blogpages = BlogPage.objects.live().descendant_of(self).order_by('-first_published_at')
         context['blogpages'] = blogpages[0:6]
         return context
+    
+class Todo(models.Model):
+    text = models.CharField(max_length=255)
+    status = models.BooleanField(default=False)
+    
+
+    def __str__(self):
+        return self.text
