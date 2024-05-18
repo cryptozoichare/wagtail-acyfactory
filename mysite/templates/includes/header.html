@@ -2,13 +2,13 @@
 <header class="text-bg-dark mb-3 border-bottom border-warning border-5 shadow-sm">
 <div><img class="object-fit-cover w-100" src="{% static 'images/caiman banner md.webp' %}"></div>
   <div class="container p-3">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start navbar">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none navbar-brand">
         Acy Factory
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" role="search" action="{% url 'search' %}" method="get">
