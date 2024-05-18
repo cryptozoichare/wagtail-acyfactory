@@ -24,20 +24,26 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "/home/logs/django.log",
         },
     },
     "loggers": {
         "django": {
-            "handlers": ["console"],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
         },
     },
 }
 
-WAGTAIL_REDIRECTS_FILE_STORAGE = "cache"
+
+WAGTAILDOCS_SERVE_METHOD = 'direct'
+
 STATIC_ROOT = "/home/public/static/"
+MEDIA_ROOT = "/home/public/media/"
 
 try:
     from .local import *
