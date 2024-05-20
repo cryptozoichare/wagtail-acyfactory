@@ -1,6 +1,4 @@
 import os
-import random
-import string
 
 from .base import *
 
@@ -40,7 +38,7 @@ LOGGING = {
 }
 
 
-WAGTAILDOCS_SERVE_METHOD = 'direct'
+WAGTAILDOCS_SERVE_METHOD = "direct"
 
 STATIC_ROOT = "/home/public/static/"
 MEDIA_ROOT = "/home/public/media/"

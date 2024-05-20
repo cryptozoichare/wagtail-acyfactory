@@ -8,19 +8,75 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0008_alter_footertext_unique_together_and_more'),
+        ("base", "0008_alter_footertext_unique_together_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='normalpage',
-            name='image',
+            model_name="normalpage",
+            name="image",
         ),
         migrations.AlterField(
-            model_name='normalpage',
-            name='body',
-            field=wagtail.fields.StreamField([('heading_block', wagtail.blocks.StructBlock([('heading_text', wagtail.blocks.CharBlock(form_classname='title', required=True)), ('size', wagtail.blocks.ChoiceBlock(blank=True, choices=[('', 'Select a heading size'), ('h2', 'H2'), ('h3', 'H3'), ('h4', 'H4')], required=False))])), ('paragraph_block', wagtail.blocks.RichTextBlock(icon='pilcrow')), ('image_block', wagtail.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock(required=True)), ('caption', wagtail.blocks.CharBlock(required=False)), ('attribution', wagtail.blocks.CharBlock(required=False))])), ('embed_block', wagtail.embeds.blocks.EmbedBlock(help_text='Insert a URL to embed. For example, https://www.youtube.com/watch?v=SGJFWirQ3ks', icon='media'))], blank=True, verbose_name='Page body'),
+            model_name="normalpage",
+            name="body",
+            field=wagtail.fields.StreamField(
+                [
+                    (
+                        "heading_block",
+                        wagtail.blocks.StructBlock(
+                            [
+                                (
+                                    "heading_text",
+                                    wagtail.blocks.CharBlock(
+                                        form_classname="title", required=True
+                                    ),
+                                ),
+                                (
+                                    "size",
+                                    wagtail.blocks.ChoiceBlock(
+                                        blank=True,
+                                        choices=[
+                                            ("", "Select a heading size"),
+                                            ("h2", "H2"),
+                                            ("h3", "H3"),
+                                            ("h4", "H4"),
+                                        ],
+                                        required=False,
+                                    ),
+                                ),
+                            ]
+                        ),
+                    ),
+                    ("paragraph_block", wagtail.blocks.RichTextBlock(icon="pilcrow")),
+                    (
+                        "image_block",
+                        wagtail.blocks.StructBlock(
+                            [
+                                (
+                                    "image",
+                                    wagtail.images.blocks.ImageChooserBlock(
+                                        required=True
+                                    ),
+                                ),
+                                ("caption", wagtail.blocks.CharBlock(required=False)),
+                                (
+                                    "attribution",
+                                    wagtail.blocks.CharBlock(required=False),
+                                ),
+                            ]
+                        ),
+                    ),
+                    (
+                        "embed_block",
+                        wagtail.embeds.blocks.EmbedBlock(
+                            help_text="Insert a URL to embed. For example, https://www.youtube.com/watch?v=SGJFWirQ3ks",
+                            icon="media",
+                        ),
+                    ),
+                ],
+                blank=True,
+                verbose_name="Page body",
+            ),
         ),
     ]

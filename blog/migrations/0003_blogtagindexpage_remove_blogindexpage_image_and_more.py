@@ -8,98 +8,153 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0002_alter_blogpage_image'),
-        ('wagtailcore', '0093_uploadedfile'),
-        ('wagtailimages', '0026_delete_uploadedimage'),
+        ("blog", "0002_alter_blogpage_image"),
+        ("wagtailcore", "0093_uploadedfile"),
+        ("wagtailimages", "0026_delete_uploadedimage"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='BlogTagIndexPage',
+            name="BlogTagIndexPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.RemoveField(
-            model_name='blogindexpage',
-            name='image',
+            model_name="blogindexpage",
+            name="image",
         ),
         migrations.RemoveField(
-            model_name='blogindexpage',
-            name='introduction',
+            model_name="blogindexpage",
+            name="introduction",
         ),
         migrations.RemoveField(
-            model_name='blogpage',
-            name='date_published',
+            model_name="blogpage",
+            name="date_published",
         ),
         migrations.RemoveField(
-            model_name='blogpage',
-            name='image',
+            model_name="blogpage",
+            name="image",
         ),
         migrations.RemoveField(
-            model_name='blogpage',
-            name='introduction',
+            model_name="blogpage",
+            name="introduction",
         ),
         migrations.RemoveField(
-            model_name='blogpage',
-            name='subtitle',
+            model_name="blogpage",
+            name="subtitle",
         ),
         migrations.AddField(
-            model_name='blogindexpage',
-            name='intro',
+            model_name="blogindexpage",
+            name="intro",
             field=wagtail.fields.RichTextField(blank=True),
         ),
         migrations.AddField(
-            model_name='blogpage',
-            name='date',
-            field=models.DateField(default=django.utils.timezone.now, verbose_name='Post date'),
+            model_name="blogpage",
+            name="date",
+            field=models.DateField(
+                default=django.utils.timezone.now, verbose_name="Post date"
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='blogpage',
-            name='intro',
-            field=models.CharField(default='null', max_length=250),
+            model_name="blogpage",
+            name="intro",
+            field=models.CharField(default="null", max_length=250),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='blogpage',
-            name='body',
+            model_name="blogpage",
+            name="body",
             field=wagtail.fields.RichTextField(blank=True),
         ),
         migrations.CreateModel(
-            name='BlogCategory',
+            name="BlogCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('icon', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "icon",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                    ),
+                ),
             ],
             options={
-                'verbose_name_plural': 'blog categories',
+                "verbose_name_plural": "blog categories",
             },
         ),
         migrations.AddField(
-            model_name='blogpage',
-            name='categories',
-            field=modelcluster.fields.ParentalManyToManyField(blank=True, to='blog.blogcategory'),
+            model_name="blogpage",
+            name="categories",
+            field=modelcluster.fields.ParentalManyToManyField(
+                blank=True, to="blog.blogcategory"
+            ),
         ),
         migrations.CreateModel(
-            name='BlogPageGalleryImage',
+            name="BlogPageGalleryImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('caption', models.CharField(blank=True, max_length=250)),
-                ('image', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='wagtailimages.image')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='gallery_images', to='blog.blogpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("caption", models.CharField(blank=True, max_length=250)),
+                (
+                    "image",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="+",
+                        to="wagtailimages.image",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="gallery_images",
+                        to="blog.blogpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
     ]

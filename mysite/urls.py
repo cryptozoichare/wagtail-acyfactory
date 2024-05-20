@@ -17,7 +17,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("blog/feed/", BlogFeed()),
     path("__debug__/", include("debug_toolbar.urls")),
-#    path("comments/", include('django_comments_ink.urls')),
+    #    path("comments/", include('django_comments_ink.urls')),
 ]
 
 

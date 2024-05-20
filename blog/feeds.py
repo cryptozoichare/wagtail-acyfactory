@@ -23,7 +23,7 @@ class BlogFeed(Feed):
 
     def item_link(self, item):
         return item.full_url
-    
+
     def item_pubdate(self, item):
         """
         Takes an item, as returned by items(), and returns the item's

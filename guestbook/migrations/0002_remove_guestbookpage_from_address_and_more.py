@@ -4,22 +4,21 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('guestbook', '0001_initial'),
+        ("guestbook", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='guestbookpage',
-            name='from_address',
+            model_name="guestbookpage",
+            name="from_address",
         ),
         migrations.RemoveField(
-            model_name='guestbookpage',
-            name='subject',
+            model_name="guestbookpage",
+            name="subject",
         ),
         migrations.RemoveField(
-            model_name='guestbookpage',
-            name='to_address',
+            model_name="guestbookpage",
+            name="to_address",
         ),
     ]

@@ -5,16 +5,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0007_customimage_caption'),
-        ('blog', '0003_blogtagindexpage_remove_blogindexpage_image_and_more'),
+        ("base", "0007_customimage_caption"),
+        ("blog", "0003_blogtagindexpage_remove_blogindexpage_image_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogcategory',
-            name='icon',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='base.customimage'),
+            model_name="blogcategory",
+            name="icon",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="base.customimage",
+            ),
         ),
     ]

@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
-#    'django_comments_ink',
-#    'django_comments',
+    #    'django_comments_ink',
+    #    'django_comments',
     "django.contrib.admin",
     "django.contrib.sites",
     "django.contrib.auth",
@@ -190,19 +190,30 @@ WAGTAILADMIN_BASE_URL = "https://acyfactory.com"
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
+WAGTAILDOCS_EXTENSIONS = [
+    "csv",
+    "docx",
+    "key",
+    "odt",
+    "pdf",
+    "pptx",
+    "rtf",
+    "txt",
+    "xlsx",
+    "zip",
+]
 
-AUTH_USER_MODEL = 'users.User'
-WAGTAILIMAGES_IMAGE_MODEL = 'base.CustomImage'
-WAGTAILDOCS_DOCUMENT_MODEL = 'base.CustomDocument'
+AUTH_USER_MODEL = "users.User"
+WAGTAILIMAGES_IMAGE_MODEL = "base.CustomImage"
+WAGTAILDOCS_DOCUMENT_MODEL = "base.CustomDocument"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 HONEYPOT_FIELD_NAME = "email"
 
-#COMMENTS_APP = 'django_comments_ink'
-#COMMENTS_INK_MAX_THREAD_LEVEL = 1
-#COMMENTS_INK_CONFIRM_EMAIL = False
+# COMMENTS_APP = 'django_comments_ink'
+# COMMENTS_INK_MAX_THREAD_LEVEL = 1
+# COMMENTS_INK_CONFIRM_EMAIL = False
 
 SITE_ID = 1

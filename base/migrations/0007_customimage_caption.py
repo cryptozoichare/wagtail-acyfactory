@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0006_customdocument'),
+        ("base", "0006_customdocument"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='customimage',
-            name='caption',
+            model_name="customimage",
+            name="caption",
             field=models.CharField(blank=True, max_length=255),
         ),
     ]
