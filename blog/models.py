@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.utils import timezone
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -9,32 +10,11 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.search import index
-from wagtail.snippets.models import register_snippet
 
 from base.blocks import BaseStreamBlock
 
 
-@register_snippet
-class BlogCategory(models.Model):
-    name = models.CharField(max_length=255)
-    icon = models.ForeignKey(
-        "base.CustomImage",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
 
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("icon"),
-    ]
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = "blog categories"
 
 
 class BlogIndexPage(Page):
@@ -70,7 +50,6 @@ class BlogPage(Page):
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
-    categories = ParentalManyToManyField("blog.BlogCategory", blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField("intro"),
@@ -81,7 +60,6 @@ class BlogPage(Page):
         MultiFieldPanel(
             [
                 FieldPanel("tags"),
-                FieldPanel("categories", widget=forms.CheckboxSelectMultiple),
             ],
             heading="Blog information",
         ),
@@ -89,7 +67,6 @@ class BlogPage(Page):
         FieldPanel("image"),
         FieldPanel("body"),
     ]
-
     def get_absolute_url(self):
         return self.full_url
 

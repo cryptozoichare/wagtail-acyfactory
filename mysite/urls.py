@@ -16,8 +16,8 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("blog/feed/", BlogFeed()),
+    path("comments/", include('django_comments_ink.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
-    #    path("comments/", include('django_comments_ink.urls')),
 ]
 
 

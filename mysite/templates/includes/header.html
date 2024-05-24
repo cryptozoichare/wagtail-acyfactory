@@ -1,6 +1,7 @@
 {% load wagtailcore_tags navigation_tags wagtailuserbar static %}
 <header class="text-bg-dark mb-3 border-bottom border-warning border-5 shadow-sm">
-<div><img class="object-fit-cover w-100" src="{% static 'images/caiman banner md.webp' %}"></div>
+  {% wagtailuserbar "bottom-right" %}
+  <div><img class="object-fit-cover w-100" src="{% static 'images/caiman banner md.webp' %}"></div>
   <div class="container p-3">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start navbar">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none navbar-brand">
@@ -11,8 +12,10 @@
         <li class="nav-item"><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" role="search" action="{% url 'search' %}" method="get">
-        <input type="search" class="form-control form-control-dark text-bg-dark me-2" placeholder="Search..." aria-label="Search" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" role="search" action="{% url 'search' %}"
+        method="get">
+        <input type="search" class="form-control form-control-dark text-bg-dark me-2" placeholder="Search..."
+          aria-label="Search" name="query" {% if search_query %} value="{{ search_query }}" {% endif %}>
         <input type="submit" value="Search" class="btn btn-warning btn-sm">
       </form>
     </div>

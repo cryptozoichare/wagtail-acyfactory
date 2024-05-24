@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "guestbook",
+    'django_comments_ink',
+    'django_comments',
+    'avatar',
     "blog",
     "home",
     "search",
@@ -47,8 +50,6 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
-    #    'django_comments_ink',
-    #    'django_comments',
     "django.contrib.admin",
     "django.contrib.sites",
     "django.contrib.auth",
@@ -135,6 +136,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -210,10 +213,10 @@ WAGTAILDOCS_DOCUMENT_MODEL = "base.CustomDocument"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-HONEYPOT_FIELD_NAME = "email"
-
-# COMMENTS_APP = 'django_comments_ink'
-# COMMENTS_INK_MAX_THREAD_LEVEL = 1
-# COMMENTS_INK_CONFIRM_EMAIL = False
+COMMENTS_APP = 'django_comments_ink'
+COMMENTS_INK_MAX_THREAD_LEVEL = 2
+COMMENTS_INK_CONFIRM_EMAIL = False
+COMMENTS_INK_THEME = ""
+COMMENTS_INK_LIST_ORDER = ('-thread_id', 'order')
 
 SITE_ID = 1

@@ -1,29 +1,24 @@
 {% extends 'base.html' %}
 
-{% load wagtailcore_tags i18n wagtailimages_tags static crispy_forms_tags %}
+{% load wagtailcore_tags i18n wagtailimages_tags static crispy_forms_tags comments comments_ink %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'django_comments_ink/css/comments.css' %}">
+{% endblock %}
 {% block content %}
 <article>
+  {% if page.image %}
+  <figure class="figure">
+    {% image page.image max-1200x400 class="img-fluid" alt="" %}
+  </figure>
+  {% endif %}
   <h1>{{ page.title }}</h1>
   <p class="meta">
     <time>{{ page.first_published_at }}</time>
   </p>
 
-  {% with categories=page.categories.all %}
-  {% if categories %}
-  <h3>Posted in:</h3>
-  <ul>
-    {% for category in categories %}
-    <li style="display: inline">{{ category.name }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-  {% endwith %}
-  {% if page.image %}
-  <figure class="figure">
-    {% image page.image original class="img-fluid" alt="" %}
-  </figure>
-  {% endif %}
+
+
   {% if page.intro %}
   <div class="intro">
     <p class="lead">{{ page.intro }}</p>
@@ -39,12 +34,50 @@
 {% if tags %}
 <div class="tags">
   <h3>Tags</h3>
-  {% for tag in tags %}
-  <a class="btn btn-primary btn-sm" href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
-  {% endfor %}
+  <ul class="list-inline">
+    {% for tag in tags %}
+    <li class="list-inline-item"><a class="badge text-bg-primary"
+        href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
 {% endif %}
 {% endwith %}
 
+<hr>
+<div class="dci">
+  {% get_inkcomment_count for page as comment_count %}
+  {% if comment_count %}
+  <h6 class="text-center">
+    {% blocktrans count comment_count=comment_count %}
+    There is {{ comment_count }} comment
+    {% plural %}
+    There are {{ comment_count }} comments
+    {% endblocktrans %}
+  </h6>
+  {% endif %}
+</div>
 
-{% endblock %}
+{% if comment_count %}
+<div class="dci pb32">
+  {% render_inkcomment_list for page %}
+</div>
+{% endif %}
+
+<div class="dci" data-dci="comment-form">
+  <section class="comment-form">
+    <h5 class="text-center">{% translate "Post your comment" %}</h5>
+    {% render_inkcomment_form for page %}
+  </section>
+</div>
+
+
+{% block extra_html %}
+{% render_comment_reply_template for object %}
+{% endblock extra_html %}
+
+{% block extra_js %}
+<script src="{% static 'django_comments_ink/dist/dci-0.3.0.js' %}"></script>
+{% endblock extra_js %}
+
+{% endblock content %}
