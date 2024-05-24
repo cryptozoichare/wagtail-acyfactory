@@ -1,5 +1,5 @@
 {# Load navigation_tags at the top of the file: #}
-{% load navigation_tags wagtailadmin_tags tz %}
+{% load navigation_tags wagtailadmin_tags tz wagtailuserbar %}
 <div class="container">
   <div class="row justify-content-center">
     <footer
@@ -24,3 +24,4 @@
     </footer>
   </div>
 </div>
+{% wagtailuserbar "bottom-right" %}

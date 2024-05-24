@@ -1,39 +1,44 @@
 {% extends 'base.html' %}
 
-{% load wagtailcore_tags i18n wagtailimages_tags static crispy_forms_tags comments comments_ink %}
+{% load wagtailcore_tags i18n wagtailimages_tags static crispy_forms_tags comments comments_xtd %}
 
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'django_comments_ink/css/comments.css' %}">
-{% endblock %}
 {% block content %}
 <article>
+
+  <h1>{{ page.title }}
+    {% if page.intro %}
+    </br>
+    <small class="text-body-secondary fw-lighter">{{ page.intro }}</small>
+
+    {% endif %}
+  </h1>
+
+
+
   {% if page.image %}
   <figure class="figure">
-    {% image page.image max-1200x400 class="img-fluid" alt="" %}
+    {% image page.image fill-1200x400 class="img-fluid" alt="" %}
   </figure>
   {% endif %}
-  <h1>{{ page.title }}</h1>
-  <p class="meta">
-    <time>{{ page.first_published_at }}</time>
-  </p>
 
 
-
-  {% if page.intro %}
-  <div class="intro">
-    <p class="lead">{{ page.intro }}</p>
-  </div>
-  {% endif %}
   {{ page.body }}
 </article>
 <p>
   <a href="{{ page.get_parent.url }}">Return to blog</a>
 </p>
-
+<p class="small">
+  <time datetime="{{ page.last_published_at|date:'c' }}">{{ page.first_published_at }}</time>
+</p>
 {% with tags=page.tags.all %}
 {% if tags %}
-<div class="tags">
-  <h3>Tags</h3>
+<div class="d-flex">
+  <span class="me-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+      class="bi bi-tag" viewBox="0 0 16 16">
+      <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
+      <path
+        d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
+    </svg>Tags: </span>
   <ul class="list-inline">
     {% for tag in tags %}
     <li class="list-inline-item"><a class="badge text-bg-primary"
@@ -45,39 +50,28 @@
 {% endwith %}
 
 <hr>
-<div class="dci">
-  {% get_inkcomment_count for page as comment_count %}
-  {% if comment_count %}
-  <h6 class="text-center">
-    {% blocktrans count comment_count=comment_count %}
-    There is {{ comment_count }} comment
-    {% plural %}
-    There are {{ comment_count }} comments
-    {% endblocktrans %}
-  </h6>
-  {% endif %}
+{% get_comment_count for page as comment_count %}
+<div class="py-4 text-center">
+  &nbsp;&sdot;&nbsp;
+  {{ comment_count }} comment{{ comment_count|pluralize }}
+  ha{{ comment_count|pluralize:"s,ve"}} been posted.
 </div>
+
+
+<div class="comment mt-3 mb-5">
+  <h4 class="text-center mb-4">Your comment</h4>
+  <div class="card pt-4">
+    {% render_comment_form for page %}
+  </div>
+</div>
+
 
 {% if comment_count %}
-<div class="dci pb32">
-  {% render_inkcomment_list for page %}
-</div>
+<ul class="media-list">
+  {% render_xtdcomment_tree for page %}
+</ul>
 {% endif %}
 
-<div class="dci" data-dci="comment-form">
-  <section class="comment-form">
-    <h5 class="text-center">{% translate "Post your comment" %}</h5>
-    {% render_inkcomment_form for page %}
-  </section>
-</div>
 
-
-{% block extra_html %}
-{% render_comment_reply_template for object %}
-{% endblock extra_html %}
-
-{% block extra_js %}
-<script src="{% static 'django_comments_ink/dist/dci-0.3.0.js' %}"></script>
-{% endblock extra_js %}
 
 {% endblock content %}

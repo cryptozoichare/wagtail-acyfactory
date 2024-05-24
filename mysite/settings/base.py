@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "guestbook",
-    'django_comments_ink',
+    'django_comments_xtd',
     'django_comments',
     'avatar',
     "blog",
@@ -132,7 +132,7 @@ LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "America/Phoenix"
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
 
@@ -213,10 +213,8 @@ WAGTAILDOCS_DOCUMENT_MODEL = "base.CustomDocument"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-COMMENTS_APP = 'django_comments_ink'
-COMMENTS_INK_MAX_THREAD_LEVEL = 2
-COMMENTS_INK_CONFIRM_EMAIL = False
-COMMENTS_INK_THEME = ""
-COMMENTS_INK_LIST_ORDER = ('-thread_id', 'order')
+COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_XTD_MAX_THREAD_LEVEL = 2
+COMMENTS_XTD_CONFIRM_EMAIL = False
 
 SITE_ID = 1
