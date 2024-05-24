@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0014_rename_commentwithtitle_blogcomment'),
+        ("blog", "0014_rename_commentwithtitle_blogcomment"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='BlogComment',
+            name="BlogComment",
         ),
     ]

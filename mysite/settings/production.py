@@ -38,7 +38,6 @@ LOGGING = {
 }
 
 
-
 STATIC_ROOT = "/home/public/static/"
 MEDIA_ROOT = "/home/public/media/"
 

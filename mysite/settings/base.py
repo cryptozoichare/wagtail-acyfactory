@@ -30,9 +30,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "guestbook",
-    'django_comments_xtd',
-    'django_comments',
-    'avatar',
+    "django_comments_xtd",
+    "django_comments",
+    "avatar",
     "blog",
     "home",
     "search",
@@ -213,7 +213,7 @@ WAGTAILDOCS_DOCUMENT_MODEL = "base.CustomDocument"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_APP = "django_comments_xtd"
 COMMENTS_XTD_MAX_THREAD_LEVEL = 2
 COMMENTS_XTD_CONFIRM_EMAIL = False
 

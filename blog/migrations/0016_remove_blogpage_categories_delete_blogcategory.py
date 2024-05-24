@@ -4,17 +4,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0015_delete_blogcomment'),
+        ("blog", "0015_delete_blogcomment"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='blogpage',
-            name='categories',
+            model_name="blogpage",
+            name="categories",
         ),
         migrations.DeleteModel(
-            name='BlogCategory',
+            name="BlogCategory",
         ),
     ]

@@ -5,17 +5,16 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0013_commentwithtitle'),
-        ('contenttypes', '0002_remove_content_type_name'),
-        ('sites', '0002_alter_domain_unique'),
+        ("blog", "0013_commentwithtitle"),
+        ("contenttypes", "0002_remove_content_type_name"),
+        ("sites", "0002_alter_domain_unique"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='CommentWithTitle',
-            new_name='BlogComment',
+            old_name="CommentWithTitle",
+            new_name="BlogComment",
         ),
     ]

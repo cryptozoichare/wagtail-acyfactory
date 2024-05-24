@@ -1,8 +1,6 @@
-from django import forms
 from django.db import models
-from django.utils import timezone
 
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
@@ -12,9 +10,6 @@ from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.search import index
 
 from base.blocks import BaseStreamBlock
-
-
-
 
 
 class BlogIndexPage(Page):
@@ -67,6 +62,7 @@ class BlogPage(Page):
         FieldPanel("image"),
         FieldPanel("body"),
     ]
+
     def get_absolute_url(self):
         return self.full_url
 
