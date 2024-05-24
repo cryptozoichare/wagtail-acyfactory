@@ -6,7 +6,9 @@ charset-normalizer==3.3.2
 crispy-bootstrap5==2024.2
 defusedxml==0.7.1
 Django==5.0.4
-django-comments-ink==0.4.0
+django-appconf==1.0.6
+django-avatar==8.0.0
+django-comments-xtd==2.10.0
 django-contrib-comments==2.2.0
 django-crispy-forms==2.1
 django-debug-toolbar==4.3.0
@@ -17,6 +19,8 @@ django-permissionedforms==0.1
 django-taggit==5.0.1
 django-treebeard==4.7.1
 djangorestframework==3.15.1
+dnspython==2.6.1
+docutils==0.21.2
 draftjs-exporter==5.0.0
 et-xmlfile==1.1.0
 filetype==1.2.0
@@ -31,6 +35,7 @@ pillow_heif==0.16.0
 python-dotenv==1.0.1
 pytz==2024.1
 requests==2.31.0
+ruff==0.4.4
 six==1.16.0
 soupsieve==2.5
 sqlparse==0.5.0

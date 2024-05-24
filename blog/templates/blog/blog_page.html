@@ -5,13 +5,11 @@
 {% block content %}
 <article>
 
-  <h1>{{ page.title }}
-    {% if page.intro %}
-    </br>
-    <small class="text-body-secondary fw-lighter">{{ page.intro }}</small>
+  <h1 class="display-4">{{ page.title }}</h1>
+  {% if page.intro %}
+  <p class="lead">{{ page.intro }}</p>
 
-    {% endif %}
-  </h1>
+  {% endif %}
 
 
 
@@ -67,7 +65,7 @@
 
 
 {% if comment_count %}
-<ul class="media-list">
+<ul class="list-group list-group-flush">
   {% render_xtdcomment_tree for page %}
 </ul>
 {% endif %}
