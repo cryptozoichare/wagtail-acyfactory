@@ -30,7 +30,7 @@
             </div>
             <div class="col-7">
                 {{ form.email }}
-                <span class="form-text small">Will not be published.</span>
+                <span class="form-text small">{{ form.email.help_text }}</span>
             </div>
         </div>
         {% endif %}
