@@ -18,9 +18,6 @@ class BlogFeed(Feed):
     def item_title(self, item):
         return item.title
 
-    def item_description(self, item):
-        return item.intro
-
     def item_link(self, item):
         return item.full_url
 
@@ -30,3 +27,8 @@ class BlogFeed(Feed):
         pubdate.
         """
         return item.first_published_at
+
+    def item_description(self, item):
+        page = item.specific
+        html = str(page.body)
+        return html
