@@ -1,38 +1,14 @@
-{% extends 'base.html' %}
-{% load wagtailcore_tags crispy_forms_tags %}
-
-{% block body_class %}
-  template-guestbookpage
-{% endblock %}
-
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-  <h1>{{ page.title }}</h1>
-  <div>{{ page.intro|richtext }}</div>
-
-
-<div class="col-lg-6">
-  <form class="page-form" action="{% pageurl page %}" method="POST">
+<h1 class="display-5 text-body-emphasis mb-1">{{ page.title }}</h1>
+{{ page.intro|richtext }}
+<h2>New post</h2>
+<form action="." method="POST">
     {% csrf_token %}
-    {{ form|crispy }}
-    <button class="btn btn-primary" type="Submit">Submit</button>
-  </form>
-</div>
-  <hr>
-  {% if guestbook_entries %}
-    {% for entry in guestbook_entries reversed %}
-    <div class="card mt-3">
-        {% if entry.url %}
-        <div class="card-header">
-          <a href="{{ entry.url }}">{{ entry.name }}</a> at {{ entry.date }}</div> 
-        {% else %}
-        <div class="card-header">
-          {{ entry.name }} at {{ entry.date }}</div> 
-        {% endif %}
-        <div class="card-body">
-          {{ entry.comment }}</div></div>
-    {% endfor %}
 
-  {% else %}
-    <p>No entries found.</p>
-  {% endif %}
-{% endblock %}
+    {{ form.as_p }}
+
+    <p><input type="submit" value="Leave a comment"></p>
+</form>
+{% endblock content %}
