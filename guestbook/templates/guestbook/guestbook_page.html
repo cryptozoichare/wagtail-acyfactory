@@ -1,14 +1,27 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags crispy_forms_tags honeypot %}
 {% block content %}
-<h1 class="display-5 text-body-emphasis mb-1">{{ page.title }}</h1>
-{{ page.intro|richtext }}
-<h2>New post</h2>
-<form action="." method="POST">
+<h1>{{ page.title }}</h1>
+<div class="intro">{{ page.intro|richtext }}</div>
+
+<form class="mb-3" method="POST">
     {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <p><input type="submit" value="Leave a comment"></p>
+    {% render_honeypot_field %}
+    {{ form|crispy }}
+    <button class="btn btn-primary" type="submit">Submit</button>
 </form>
+<hr>
+
+<ul class="list-unstyled">
+    {% for entry in entries %}
+    <li>
+        <div class="card mb-3">
+            <div class="card-header">
+                <strong>{{ entry.name }}</strong> <em>({{ entry.submitted_at }})</em>
+            </div>
+            <div class="card-body">{{ entry.message }}</div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock content %}

@@ -34,8 +34,8 @@ $cyan: #86d3ed;
 // scss-docs-end color-variables
 
 // scss-docs-start theme-color-variables
-$primary:       $orange;
-$warning:       $yellow;
+$primary: $orange;
+$warning: $yellow;
 // scss-docs-end theme-color-variables
 
 // Typography
@@ -50,8 +50,8 @@ $display-font-family: "Alegreya SC";
 $display-font-weight: 400;
 $font-size-base: 1.25rem;
 $h1-font-size: $font-size-base * 2;
-$h2-font-size: $font-size-base * 1.75;
-$h3-font-size: $font-size-base * 1.5;
+$h2-font-size: $font-size-base * 1.5;
+$h3-font-size: $font-size-base * 1.25;
 
 // Options
 //
@@ -64,3 +64,5 @@ $enable-shadows: true;
 //
 // Style anchor elements.
 $link-decoration: none;
+
+$input-btn-line-height: 1;

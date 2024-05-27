@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+    "honeypot",
     "django.contrib.admin",
     "django.contrib.sites",
     "django.contrib.auth",
@@ -219,3 +220,5 @@ COMMENTS_XTD_CONFIRM_EMAIL = False
 COMMENTS_XTD_FORM_CLASS = "blog.forms.XtdCommentForm"
 
 SITE_ID = 1
+
+HONEYPOT_FIELD_NAME = "title"
