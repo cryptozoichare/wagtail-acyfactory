@@ -41,6 +41,7 @@ class BlogPage(Page):
         related_name="+",
         help_text="Landscape mode only; horizontal width between 1000px and 3000px.",
     )
+    caption = models.CharField(blank=True, max_length=250)
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
@@ -54,13 +55,14 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
-                FieldPanel("tags"),
+        FieldPanel("image"),
+        FieldPanel('caption'),  
             ],
-            heading="Blog information",
+            heading="Main image",
         ),
         FieldPanel("intro"),
-        FieldPanel("image"),
         FieldPanel("body"),
+        FieldPanel("tags"),
     ]
 
     def get_absolute_url(self):
