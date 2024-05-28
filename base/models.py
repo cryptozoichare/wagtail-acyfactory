@@ -1,15 +1,9 @@
 from django.db import models
-from modelcluster.fields import ParentalKey
 from wagtail.models import Page
 from wagtail.admin.panels import (
     FieldPanel,
-    FieldRowPanel,
-    InlinePanel,
-    MultiFieldPanel,
 )
-from wagtail.fields import RichTextField, StreamField
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.contrib.forms.panels import FormSubmissionsPanel
+from wagtail.fields import StreamField
 from wagtail.contrib.settings.models import (
     BaseGenericSetting,
     register_setting,
@@ -79,7 +73,7 @@ class DesignSettings(BaseGenericSetting):
         related_name="+",
         help_text="Square suggested.",
     )
-    
+
     panels = [
         FieldPanel("banner"),
         FieldPanel("logo"),

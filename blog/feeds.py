@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
-from django.urls import reverse
 from .models import BlogPage
+
 
 class BlogFeed(Feed):
     title = "My Wagtail Blog"
@@ -9,7 +9,7 @@ class BlogFeed(Feed):
     description_template = "feeds/blog_description.html"
 
     def items(self):
-        return BlogPage.objects.live().order_by('-first_published_at')[:10]
+        return BlogPage.objects.live().order_by("-first_published_at")[:10]
 
     def item_title(self, item):
         return item.title

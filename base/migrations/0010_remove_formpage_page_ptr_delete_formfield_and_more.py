@@ -4,20 +4,19 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('base', '0009_remove_normalpage_image_alter_normalpage_body'),
+        ("base", "0009_remove_normalpage_image_alter_normalpage_body"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='formpage',
-            name='page_ptr',
+            model_name="formpage",
+            name="page_ptr",
         ),
         migrations.DeleteModel(
-            name='FormField',
+            name="FormField",
         ),
         migrations.DeleteModel(
-            name='FormPage',
+            name="FormPage",
         ),
     ]

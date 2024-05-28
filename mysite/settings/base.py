@@ -226,4 +226,4 @@ HONEYPOT_FIELD_NAME = "title"
 
 WAGTAILADMIN_COMMENTS_ENABLED = False
 
-WAGTAILIMAGES_EXTENSIONS = ['png', 'jpg', 'jpeg', 'avif', 'gif', 'webp', 'svg']
+WAGTAILIMAGES_EXTENSIONS = ["png", "jpg", "jpeg", "avif", "gif", "webp", "svg"]

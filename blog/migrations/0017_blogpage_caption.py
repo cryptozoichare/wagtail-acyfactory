@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0016_remove_blogpage_categories_delete_blogcategory'),
+        ("blog", "0016_remove_blogpage_categories_delete_blogcategory"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpage',
-            name='caption',
+            model_name="blogpage",
+            name="caption",
             field=models.CharField(blank=True, max_length=250),
         ),
     ]

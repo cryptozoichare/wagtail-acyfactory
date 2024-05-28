@@ -8,12 +8,11 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from base import views as base_views
 from search import views as search_views
 from blog.feeds import BlogFeed
 
 urlpatterns = [
-    path('django-admin/doc/', include('django.contrib.admindocs.urls')),
+    path("django-admin/doc/", include("django.contrib.admindocs.urls")),
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("accounts/", include("django.contrib.auth.urls")),
@@ -21,7 +20,10 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("blog/feed/", BlogFeed()),
     path("comments/", include("django_comments_xtd.urls")),
-    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
     path(
         "favicon.ico",
         RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
