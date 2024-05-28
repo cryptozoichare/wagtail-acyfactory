@@ -313,3 +313,4 @@ dist
 
 *.sh
 .bashrc
+data.json
