@@ -10,38 +10,14 @@ from wagtail.admin.panels import (
 from wagtail.fields import RichTextField, StreamField
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
+from wagtail.contrib.settings.models import (
+    BaseGenericSetting,
+    register_setting,
+)
 
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
 from wagtail.documents.models import Document, AbstractDocument
 from base.blocks import BaseStreamBlock
-
-
-class FormField(AbstractFormField):
-    page = ParentalKey("FormPage", on_delete=models.CASCADE, related_name="form_fields")
-
-
-class FormPage(AbstractEmailForm):
-    intro = RichTextField(blank=True)
-    thank_you_text = RichTextField(blank=True)
-
-    content_panels = AbstractEmailForm.content_panels + [
-        FormSubmissionsPanel(),
-        FieldPanel("intro"),
-        InlinePanel("form_fields", label="Form fields"),
-        FieldPanel("thank_you_text"),
-        MultiFieldPanel(
-            [
-                FieldRowPanel(
-                    [
-                        FieldPanel("from_address"),
-                        FieldPanel("to_address"),
-                    ]
-                ),
-                FieldPanel("subject"),
-            ],
-            "Email",
-        ),
-    ]
 
 
 class NormalPage(Page):
@@ -83,3 +59,28 @@ class CustomDocument(AbstractDocument):
         # Add all custom fields names to make them appear in the form:
         "source",
     )
+
+
+@register_setting
+class DesignSettings(BaseGenericSetting):
+    banner = models.ForeignKey(
+        "base.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Landscape suggested.",
+    )
+    logo = models.ForeignKey(
+        "base.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Square suggested.",
+    )
+    
+    panels = [
+        FieldPanel("banner"),
+        FieldPanel("logo"),
+    ]

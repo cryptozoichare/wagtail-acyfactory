@@ -10,6 +10,7 @@ from honeypot.decorators import check_honeypot
 class GuestbookEntry(models.Model):
     name = models.CharField(max_length=255)
     message = models.TextField()
+    url = models.URLField(blank=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -29,7 +30,7 @@ class GuestbookPage(Page):
         return context
 
     def serve(self, request):
-        from .forms import GuestbookForm  # Move the import inside the method to avoid circular import
+        from .forms import GuestbookForm  
 
         form = GuestbookForm()
 

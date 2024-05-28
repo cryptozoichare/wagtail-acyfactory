@@ -5,23 +5,23 @@
 
 <!-- replace everything below with: -->
 {% block content %}
-  {{ page.body }}
-  <hr />
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col">
-      <div class="card">
-        <h3 class="card-header">Latest Posts</h3>
-        <ul class="list-group list-group-flush">
-          {% for post in blogpages %}
-            {% with post=post.specific %}
-              <li class="list-group-item">
-                <a href="{% pageurl post %}">{{ post.title }}</a>
-              </li>
-            {% endwith %}
-          {% endfor %}
-        </ul>
-      </div>
+{{ page.body }}
+<hr />
+<div class="row row-cols-1 row-cols-md-2 g-3">
+  <div class="col">
+    <div class="card">
+      <h3 class="card-header">Latest Posts</h3>
+      <ul class="list-group list-group-flush">
+        {% for post in blogpages %}
+        {% with post=post.specific %}
+        <li class="list-group-item">
+          <a href="{% pageurl post %}">{{ post.title }}</a>
+        </li>
+        {% endwith %}
+        {% endfor %}
+      </ul>
     </div>
-    {% todos %}
   </div>
+  {% todos %}
+</div>
 {% endblock %}

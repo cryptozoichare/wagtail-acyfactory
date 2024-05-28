@@ -13,6 +13,7 @@ from search import views as search_views
 from blog.feeds import BlogFeed
 
 urlpatterns = [
+    path('django-admin/doc/', include('django.contrib.admindocs.urls')),
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("accounts/", include("django.contrib.auth.urls")),

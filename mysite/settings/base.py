@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "taggit",
     "honeypot",
     "django.contrib.admin",
+    "django.contrib.admindocs",
     "django.contrib.sites",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -176,7 +177,7 @@ STORAGES = {
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mysite"
+WAGTAIL_SITE_NAME = "Acy Factory"
 
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
@@ -222,3 +223,7 @@ COMMENTS_XTD_FORM_CLASS = "blog.forms.XtdCommentForm"
 SITE_ID = 1
 
 HONEYPOT_FIELD_NAME = "title"
+
+WAGTAILADMIN_COMMENTS_ENABLED = False
+
+WAGTAILIMAGES_EXTENSIONS = ['png', 'jpg', 'jpeg', 'avif', 'gif', 'webp', 'svg']

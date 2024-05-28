@@ -2,114 +2,100 @@
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Thin.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Thin.woff') format('woff');
+  font-style: normal;
   font-weight: 100;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Thin.woff2") format("woff2"), url("../fonts/AlegreyaSans-Thin.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Light.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Light.woff') format('woff');
+  font-style: normal;
   font-weight: 300;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Light.woff2") format("woff2"), url("../fonts/AlegreyaSans-Light.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('/static/fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-style: normal;
   font-weight: 400;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("/static/fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Medium.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Medium.woff') format('woff');
+  font-style: normal;
   font-weight: 500;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Medium.woff2") format("woff2"), url("../fonts/AlegreyaSans-Medium.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Bold.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Bold.woff') format('woff');
+  font-style: normal;
   font-weight: 700;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Bold.woff2") format("woff2"), url("../fonts/AlegreyaSans-Bold.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-ExtraBold.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-ExtraBold.woff') format('woff');
+  font-style: normal;
   font-weight: 800;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-ExtraBold.woff2") format("woff2"), url("../fonts/AlegreyaSans-ExtraBold.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Black.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Black.woff') format('woff');
+  font-style: normal;
   font-weight: 900;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSans-Black.woff2") format("woff2"), url("../fonts/AlegreyaSans-Black.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-ThinItalic.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-ThinItalic.woff') format('woff');
+  font-style: italic;
   font-weight: 100;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-ThinItalic.woff2") format("woff2"), url("../fonts/AlegreyaSans-ThinItalic.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-LightItalic.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-LightItalic.woff') format('woff');
+  font-style: italic;
   font-weight: 300;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-LightItalic.woff2") format("woff2"), url("../fonts/AlegreyaSans-LightItalic.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 400;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 500;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 700;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 800;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya Sans";
-  src: url('../fonts/AlegreyaSans-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSans-Regular.woff') format('woff');
-  font-weight: 900;
   font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/AlegreyaSans-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSans-Regular.woff") format("woff");
 }
 
 // Alegreya SC
@@ -118,81 +104,71 @@
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('/static/fonts/AlegreyaSC-Regular.woff') format('woff');
+  font-style: normal;
   font-weight: 400;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("/static/fonts/AlegreyaSC-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Medium.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Medium.woff') format('woff');
+  font-style: normal;
   font-weight: 500;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSC-Medium.woff2") format("woff2"), url("../fonts/AlegreyaSC-Medium.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Bold.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Bold.woff') format('woff');
+  font-style: normal;
   font-weight: 700;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSC-Bold.woff2") format("woff2"), url("../fonts/AlegreyaSC-Bold.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-ExtraBold.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-ExtraBold.woff') format('woff');
+  font-style: normal;
   font-weight: 800;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSC-ExtraBold.woff2") format("woff2"), url("../fonts/AlegreyaSC-ExtraBold.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Black.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Black.woff') format('woff');
+  font-style: normal;
   font-weight: 900;
-  font-style: normal;
+  src: url("../fonts/AlegreyaSC-Black.woff2") format("woff2"), url("../fonts/AlegreyaSC-Black.woff") format("woff");
 }
 
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 400;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSC-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 500;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSC-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 700;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSC-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Regular.woff') format('woff');
+  font-style: italic;
   font-weight: 800;
-  font-style: italic;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSC-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Alegreya SC";
-  src: url('../fonts/AlegreyaSC-Regular.woff2') format('woff2'),
-    url('../fonts/AlegreyaSC-Regular.woff') format('woff');
-  font-weight: 900;
   font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/AlegreyaSC-Regular.woff2") format("woff2"), url("../fonts/AlegreyaSC-Regular.woff") format("woff");
 }

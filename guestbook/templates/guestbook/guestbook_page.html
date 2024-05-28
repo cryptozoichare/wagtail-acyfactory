@@ -17,7 +17,12 @@
     <li>
         <div class="card mb-3">
             <div class="card-header">
-                <strong>{{ entry.name }}</strong> <em>({{ entry.submitted_at }})</em>
+                {% if entry.url %}
+                <strong class="me-3"><a href="{{ entry.url }}"> {{ entry.name }}</a></strong>
+                {% else %}
+                <strong class="me-3">{{ entry.name }}</strong>
+                {% endif %}
+                <time class="small text-secondary">{{ entry.submitted_at }}</time>
             </div>
             <div class="card-body">{{ entry.message }}</div>
         </div>

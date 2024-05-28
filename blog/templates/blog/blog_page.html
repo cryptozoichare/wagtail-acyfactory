@@ -15,7 +15,11 @@
 
   {% if page.image %}
   <figure class="figure">
-    {% image page.image fill-1200x400 class="img-fluid" alt="" %}
+    {% image page.image fill-1200x400 as main_image %}
+    <img src="{{ main_image.url }}" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ page.alt }}"
+      class="figure-img img-fluid" />
+    {% if page.caption %}<figcaption class="figure-caption">{{ page.caption|richtext }}</figcaption>
+    {% endif %}
   </figure>
   {% endif %}
 

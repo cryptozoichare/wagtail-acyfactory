@@ -1,0 +1,15 @@
+{% for page in obj %}
+{% if page.intro %}
+<p>{{ page.intro }}</p>
+{% endif %}
+{% if page.image %}
+<figure>
+    {% image page.image fill-1200x400 as main_image %}
+    <img src="{{ main_image.url }}" width="{{ main_image.width }}" height="{{ main_image.height }}"
+        alt="{{ page.alt }}" />
+    {% if obj.caption %}<figcaption>{{ page.caption|richtext }}</figcaption>
+    {% endif %}
+</figure>
+{% endif %}
+{{ page.body }}
+{% endfor %}

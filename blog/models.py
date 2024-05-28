@@ -20,8 +20,8 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        blogpages = self.get_children().live().order_by("-first_published_at")
-        context["blogpages"] = blogpages
+        blogpages = self.get_children().live().order_by('-first_published_at')
+        context['blogpages'] = blogpages
         return context
 
 
@@ -39,9 +39,10 @@ class BlogPage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-        help_text="Landscape mode only; horizontal width between 1000px and 3000px.",
+        help_text="Landscape suggested.",
     )
-    caption = models.CharField(blank=True, max_length=250)
+    caption = RichTextField(blank=True, max_length=250)
+    alt = models.CharField(blank=True, max_length=250)
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
@@ -57,6 +58,7 @@ class BlogPage(Page):
             [
         FieldPanel("image"),
         FieldPanel('caption'),  
+        FieldPanel('alt'), 
             ],
             heading="Main image",
         ),

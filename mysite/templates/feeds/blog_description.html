@@ -1,0 +1,8 @@
+{% load wagtailcore_tags i18n wagtailimages_tags %}
+{% autoescape off %}
+{% if obj.intro %}<p>{{ obj.intro }}</p>{% endif %}
+<figure>{% image obj.image fill-1200x400 %}
+    <figcaption>{{ obj.caption|richtext }}</figcaption>
+</figure>
+<p>{{ obj.body }}</p>
+{% endautoescape %}
