@@ -52,28 +52,33 @@
 {% endwith %}
 
 <hr>
-{% get_comment_count for page as comment_count %}
-<div class="py-4 text-center">
-  &nbsp;&sdot;&nbsp;
-  {{ comment_count }} comment{{ comment_count|pluralize }}
-  ha{{ comment_count|pluralize:"s,ve"}} been posted.
-</div>
+<section>
+  <h2>Comments</h2>
+  {% get_comment_count for page as comment_count %}
+  <p>
+    {{ comment_count }} comment{{ comment_count|pluralize }}
+    ha{{ comment_count|pluralize:"s,ve"}} been posted.
+  </p>
+  <p>Email is optional, but may be used to provide an avatar from <a href="https://www.libravatar.org/">Libravatar</a>.
+  </p>
+  <h3>Rules</h3>
+  <ol>
+    <li>Be nice.</li>
+    <li>I reserve the right to remove your comment for any reason.</li>
+  </ol>
 
-
-<div class="comment mt-3 mb-5">
-  <h4 class="text-center mb-4">Your comment</h4>
-  <div class="card pt-4">
-    {% render_comment_form for page %}
+  <div class="comment mt-3 mb-5">
+    <p class="mb-4">Leave a comment:</p>
+    <div class="card pt-4">
+      {% render_comment_form for page %}
+    </div>
   </div>
-</div>
 
 
-{% if comment_count %}
-<ul class="list-group list-group-flush">
-  {% render_xtdcomment_tree for page %}
-</ul>
-{% endif %}
-
-
-
+  {% if comment_count %}
+  <ul class="list-group list-group-flush">
+    {% render_xtdcomment_tree for page %}
+  </ul>
+  {% endif %}
+</section>
 {% endblock content %}

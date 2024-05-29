@@ -63,6 +63,7 @@ $enable-shadows: true;
 // Links
 //
 // Style anchor elements.
-$link-decoration: none;
+
+$link-color: shade-color($teal, 20%);
 
 $input-btn-line-height: 1;

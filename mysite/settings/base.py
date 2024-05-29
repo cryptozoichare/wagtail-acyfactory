@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     "guestbook",
     "django_comments_xtd",
     "django_comments",
-    "avatar",
     "blog",
     "home",
     "search",

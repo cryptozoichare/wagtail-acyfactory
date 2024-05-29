@@ -1,11 +1,11 @@
 {% load i18n %}
 {% load comments %}
-{% load comments_xtd %}
+{% load comments_xtd custom_tags %}
 
 {% for item in comments %}
 <div id="c{{ item.comment.id }}" class="comment{% if not item.children %} pb-3{% endif %} d-flex">
     {% if item.comment.user_email %}
-    <img src="{{ item.comment.user_email|xtd_comment_gravatar_url }}" class="me-3" height="48" width="48" />
+    <img src="{{ item.comment.user_email|xtd_comment_libravatar_url }}" class="me-3" height="48" width="48" />
     {% else %}
     <div class="me-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
@@ -17,12 +17,13 @@
     </div>
     {% endif %}
     <div class="d-flex flex-column flex-grow-1">
-        <h6 class="comment-header mb-1 d-flex justify-content-between">
+        <span class="h6 comment-header mb-1 d-flex justify-content-between">
             <div class="d-inline flex-grow-1">
-                <span>{% if item.comment.url and not item.comment.is_removed %}<a href="{{ item.comment.url }}"
-                        target="_new"
-                        class="text-decoration-none">{% endif %}{{ item.comment.name }}{% if item.comment.url %}</a>{% endif %}{% if item.comment.user and item.comment.user|has_permission:"django_comments.can_moderate" %}&nbsp;<span
-                        class="badge text-bg-secondary">{% trans "Admin" %}</span>{% endif %}&nbsp;-&nbsp;{{ item.comment.submit_date }}</span>
+                <span class="fw-bold">{% if item.comment.url and not item.comment.is_removed %}<a
+                        href="{{ item.comment.url }}" target="_new"
+                        class="text-decoration-none">{% endif %}{{ item.comment.name }}{% if item.comment.url %}</a>{% endif %}{% if item.comment.user and item.comment.user|has_permission:"django_comments.can_moderate" %}&nbsp;</span><span
+                    class="badge text-bg-secondary">{% trans "Admin" %}</span>{% endif %}&nbsp;-&nbsp;<span
+                    class="small">{{ item.comment.submit_date }}</span>
                 <span>&nbsp;&nbsp;<a class="permalink text-decoration-none" title="{% trans 'comment permalink' %}"
                         href="{% get_comment_permalink item.comment %}">¶</a></span>
             </div>
@@ -48,7 +49,7 @@
                 {% endif %}
                 {% endif %}
             </div>
-        </h6>
+        </span>
         {% if item.comment.is_removed %}
         <p class="text-muted{% if not allow_feedback and not item.comment.allow_thread %} pb-3{% endif %}">
             <em>{% trans "This comment has been removed." %}</em>
