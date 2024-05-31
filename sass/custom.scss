@@ -17,7 +17,9 @@
 
 // 6. Optionally include any other parts as needed
 @import "../node_modules/bootstrap/scss/utilities";
+/* Reboot start. */
 @import "../node_modules/bootstrap/scss/reboot";
+/* Reboot end. */
 @import "../node_modules/bootstrap/scss/type";
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
