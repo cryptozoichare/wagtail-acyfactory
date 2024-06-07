@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django_comments_xtd",
     "django_comments",
     "blog",
+    "collection",
     "home",
     "search",
     "wagtail.contrib.settings",

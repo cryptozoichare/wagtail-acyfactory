@@ -22,6 +22,10 @@ class NormalPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("body"),
     ]
+    
+class GenericIndexPage(Page):
+    def get_descendants(self):
+        return self.get_children().live()
 
 
 class CustomImage(AbstractImage):

@@ -1,0 +1,13 @@
+<!-- templates/pages/includes/subpage_list.html -->
+
+<ul>
+    {% for subpage in pages %}
+    <li>
+        <a href="{{ subpage.url }}">{{ subpage.title }}</a>
+        <!-- Recursively render subpages if they exist -->
+        {% if subpage.get_children %}
+        {% include "base/includes/subpage_list.html" with pages=subpage.get_children %}
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
