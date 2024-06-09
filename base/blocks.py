@@ -5,6 +5,8 @@ from wagtail.blocks import (
     StreamBlock,
     StructBlock,
     RawHTMLBlock,
+    URLBlock,
+    ListBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
@@ -18,6 +20,18 @@ class ImageBlock(StructBlock):
     class Meta:
         icon = "image"
         template = "base/blocks/image_block.html"
+        
+class LinkButtonBlock(StructBlock):
+    url = URLBlock()
+    text = CharBlock()
+    icon = CharBlock(required=False)
+    color_class = ChoiceBlock(choices=[('btn-primary', 'Primary'), ('btn-secondary', 'Secondary')],
+                              default='btn-primary')
+    
+    class Meta:
+        icon = "link-external"
+        template = "base/blocks/link_button.html"
+        
 
 
 class HeadingBlock(StructBlock):
@@ -47,3 +61,5 @@ class BaseStreamBlock(StreamBlock):
         icon="media",
     )
     html_block = RawHTMLBlock()
+    link_button_block = ListBlock(LinkButtonBlock,
+                                  template="base/blocks/link_button_list.html",)
