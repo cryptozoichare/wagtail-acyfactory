@@ -9,12 +9,26 @@
     <div class="col">
         <div class="card h-100">
             {% if product.image %}
-            {% image product.image fill-250x250 class="card-img-top object-fit-contain" %}
+            {% image product.image fill-300x300 class="card-img-top object-fit-cover" %}
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title h3">{{ product.name }}</h2>
-                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">{{ product.description|linebreaks }}</p>
             </div>
+            <ul class="list-group list-group-flush">
+                {% if product.brand %}
+                <li class="list-group-item"><b>Brand:</b> {{ product.brand }}</li>
+                {% endif %}
+                {% if product.manufacturer %}
+                <li class="list-group-item"><b>Manufacturer:</b> {{ product.manufacturer }}</li>
+                {% endif %}
+                {% if product.designer %}
+                <li class="list-group-item"><b>Designer:</b> {{ product.designer }}</li>
+                {% endif %}
+                {% if product.url %}
+                <li class="list-group-item"><b>URL:</b> {{ product.url|urlize }}</li>
+                {% endif %}
+            </ul>
         </div>
     </div>
     {% endfor %}

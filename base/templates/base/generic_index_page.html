@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
+
 
 {% block content %}
 <h1>{{ page.title }}</h1>
-
-<!-- Define a template tag to recursively render subpages -->
+{{ page.intro|richtext }}
 {% include "base/includes/subpage_list.html" with pages=page.get_descendants %}
 {% endblock %}

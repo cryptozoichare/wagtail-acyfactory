@@ -3,7 +3,7 @@ from wagtail.models import Page
 from wagtail.admin.panels import (
     FieldPanel,
 )
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, RichTextField
 from wagtail.contrib.settings.models import (
     BaseGenericSetting,
     register_setting,
@@ -24,6 +24,10 @@ class NormalPage(Page):
     ]
     
 class GenericIndexPage(Page):
+    intro = RichTextField(blank=True)
+    content_panels = Page.content_panels + [
+        FieldPanel("intro", classname="full"),
+    ]
     def get_descendants(self):
         return self.get_children().live()
 
