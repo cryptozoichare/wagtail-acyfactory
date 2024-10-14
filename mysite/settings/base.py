@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "guestbook",
+    "askbox",
     "django_comments_xtd",
     "django_comments",
     "blog",

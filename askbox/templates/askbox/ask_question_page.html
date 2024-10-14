@@ -1,0 +1,34 @@
+{# templates/ask_question_page.html #}
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags crispy_forms_tags honeypot %}
+
+{% block content %}
+  <h1>{{ page.title }}</h1>
+
+  <h2>Ask a Question</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% render_honeypot_field %}
+    {{ form|crispy }}
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+
+  <h2>Answered Questions</h2>
+
+    {% for question in answered_questions %}
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="d-flex">
+            <div class="flex-grow-1">
+        <strong>Q: {{ question.question_text }}</strong><br>
+      </div>
+      </div>
+      </div>
+      <div class="card-body">
+        <p>A: {{ question.answer_text }}</p>
+      </div>
+      </div>
+    {% empty %}
+      <li>No answered questions yet.</li>
+    {% endfor %}
+{% endblock %}
