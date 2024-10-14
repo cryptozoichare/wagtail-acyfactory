@@ -8,6 +8,7 @@ from .models import Question
 class QuestionViewSet(SnippetViewSet):
     model = Question
     panels = [
+        FieldPanel('name'),
         FieldPanel('question_text'),
         FieldPanel('answer_text'),
         FieldPanel('is_answered'),

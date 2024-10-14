@@ -6,6 +6,7 @@ class Question(models.Model):
     question_text = models.TextField("Question")
     answer_text = models.TextField("Answer", blank=True)
     is_answered = models.BooleanField(default=False)
+    name = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return f"{self.question_text[:50]}{'...' if len(self.question_text) > 50 else ''}"
