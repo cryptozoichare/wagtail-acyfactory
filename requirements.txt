@@ -18,7 +18,7 @@ django-modelcluster==6.3
 django-permissionedforms==0.1
 django-taggit==5.0.1
 django-treebeard==4.7.1
-djangorestframework==3.15.1
+djangorestframework==3.15.2
 dnspython==2.6.1
 docutils==0.21.2
 draftjs-exporter==5.0.0
