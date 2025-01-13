@@ -3,10 +3,9 @@ from .models import BlogPage
 
 
 class BlogFeed(Feed):
-    title = "My Wagtail Blog"
-    link = "/feed/"
-    description = "Updates on new blog posts from My Wagtail Blog."
-    description_template = "feeds/blog_description.html"
+    title = "Acy Factory"
+    link = "/blog/"
+    description = "The blog of Acy Factory."
 
     def items(self):
         return BlogPage.objects.live().order_by("-first_published_at")[:10]

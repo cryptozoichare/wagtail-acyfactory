@@ -20,6 +20,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("blog/feed/", BlogFeed()),
     path("comments/", include("django_comments_xtd.urls")),
+    path('doodle/', include('doodle.urls', namespace='doodle')),
     path(
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),

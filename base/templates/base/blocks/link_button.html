@@ -1,4 +1,4 @@
-<a class="btn btn-lg {{ self.color_class }}" href="{{ self.url }}" target="_blank">
+<a class="btn btn-lg {{ self.color_class }} col-lg-9 mx-lg-auto" href="{{ self.url }}" target="_blank">
     {% if self.icon %}
     {% with icon_path="../icons/"|add:self.icon|add:".svg" %}
     {% include icon_path %}

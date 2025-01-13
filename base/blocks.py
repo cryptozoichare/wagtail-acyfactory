@@ -9,13 +9,12 @@ from wagtail.blocks import (
     ListBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.blocks import ImageChooserBlock, ImageBlock
 
 
 class ImageBlock(StructBlock):
-    image = ImageChooserBlock(required=True)
+    image = ImageBlock(required=True)
     caption = CharBlock(required=False)
-    attribution = CharBlock(required=False)
 
     class Meta:
         icon = "image"
