@@ -4,7 +4,7 @@
   {% get_settings %}
   {% with banner=settings.base.DesignSettings.banner %}
   {% if banner %}
-  {% image banner fill-1320x250 format-webp-lossless class="img-fluid" %}
+  {% srcset_image banner format-webp-lossless class="img-fluid" fill-{1320x250,1200x227,992x187,768x145,576x109} sizes="(min-width: 1400px) 1073px, (min-width: 1200px) 923px, (min-width: 1000px) 773px, (min-width: 780px) 693px, (min-width: 580px) 513px, calc(100vw - 27px)" %}
   {% endif %}
   {% endwith %}
   <div class="container border-bottom border-warning border-5 shadow-sm">
