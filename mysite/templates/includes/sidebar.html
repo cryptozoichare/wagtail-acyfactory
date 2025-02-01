@@ -1,16 +1,20 @@
 {% load wagtailcore_tags navigation_tags wagtailuserbar wagtailsettings_tags wagtailimages_tags %}
 {% get_site_root as site_root %}
-<div class="px-4 py-2" role="banner">
-  {% get_settings %}
-  {% with logo=settings.base.DesignSettings.logo %}
-  {% if logo %}
-  {% image logo fill-200x200 format-webp-lossless class="mx-auto d-block img-fluid" %}
-  {% endif %}
-  {% endwith %}
-</div>
-<nav class="card bg-body-tertiary shadow-sm mb-3">
-  <span class="card-header">Navigation</span>
-  <ul class="nav nav-pills flex-lg-column card-body">
+<div class="d-none d-lg-block col-lg-2 me-3">
+<nav class="mb-3 p-3 bg-body-tertiary border border-top-0 border-dark border-2 shadow">
+  <div class="px-4 py-2" role="banner">
+    {% get_settings %}
+    {% with logo=settings.base.DesignSettings.logo %}
+    {% if logo %}
+    <a href="/">
+    {% image logo fill-200x200 format-webp-lossless class="mx-auto d-block img-fluid" %}
+  </a>
+    {% endif %}
+    {% endwith %}
+  </div>
+  
+  <span class="h6 border-bottom d-block">Navigation</span>
+  <ul class="nav nav-pills flex-column">
     <li class="nav-item">
       {% with request.path as current_url %}
       <a class="{% if current_url == site_root.url %}active{% endif %} nav-link"
@@ -24,4 +28,9 @@
     {% endfor %}
     {% endwith %}
   </ul>
+  <span class="h6 border-bottom d-block">Change theme</span>
+  <button name="color theme" aria-label="Toggle theme" class="btn btn-danger ms-2" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brilliance" viewBox="0 0 16 16">
+    <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16M1 8a7 7 0 0 0 7 7 3.5 3.5 0 1 0 0-7 3.5 3.5 0 1 1 0-7 7 7 0 0 0-7 7"/>
+  </svg></button>
 </nav>
+</div>

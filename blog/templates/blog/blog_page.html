@@ -3,84 +3,76 @@
 {% load wagtailcore_tags i18n wagtailimages_tags static crispy_forms_tags comments comments_xtd %}
 
 {% block content %}
-<article>
-
-  <h1 class="display-4">{{ page.title }}</h1>
-  {% if page.intro %}
-  <p class="lead">{{ page.intro }}</p>
-  {% endif %}
-  <p class="small">
-    Posted <time datetime="{{ page.last_published_at|date:'c' }}">{{ page.first_published_at }}</time>
-  </p>
-
-
-
-
-
-
-  {% if page.image %}
-  <figure class="figure">
-    {% image page.image fill-1200x400 as main_image %}
-    <img src="{{ main_image.url }}" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ page.alt }}"
-      class="figure-img img-fluid" />
-    {% if page.caption %}<figcaption class="figure-caption">{{ page.caption|richtext }}</figcaption>
+  <article>
+    <h1 class="display-4">{{ page.title }}</h1>
+    {% if page.intro %}
+      <p class="lead">{{ page.intro }}</p>
     {% endif %}
-  </figure>
-  {% endif %}
+    <p class="small">
+      Posted <time datetime="{{ page.last_published_at|date:'c' }}">{{ page.first_published_at }}</time>
+    </p>
 
+    {% if page.image %}
+      <figure class="figure">
+        {% image page.image fill-960x540 as main_image %}
+        <img src="{{ main_image.url }}" width="{{ main_image.width }}" height="{{ main_image.height }}" alt="{{ page.alt }}" class="figure-img img-fluid" />
+        {% if page.caption %}
+          <figcaption class="figure-caption">{{ page.caption|richtext }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
 
-  {{ page.body }}
-</article>
-<p>
-  <a href="{{ page.get_parent.url }}">Return to blog</a>
-</p>
-{% with tags=page.tags.all %}
-{% if tags %}
-<div class="d-flex">
-  <span class="me-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-      class="bi bi-tag" viewBox="0 0 16 16">
-      <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
-      <path
-        d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
-    </svg>Tags: </span>
-  <ul class="list-inline">
-    {% for tag in tags %}
-    <li class="list-inline-item"><a class="badge text-bg-primary text-decoration-none"
-        href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
-{% endwith %}
-
-<hr>
-<section>
-  <h2>Comments</h2>
-  {% get_comment_count for page as comment_count %}
+    {{ page.body }}
+  </article>
   <p>
-    {{ comment_count }} comment{{ comment_count|pluralize }}
-    ha{{ comment_count|pluralize:"s,ve"}} been posted.
+    <a href="{{ page.get_parent.url }}">Return to blog</a>
   </p>
-  <p>Email is optional, but may be used to provide an avatar from <a href="https://www.libravatar.org/">Libravatar</a>.
-  </p>
-  <h3>Rules</h3>
-  <ol>
-    <li>Be nice.</li>
-    <li>I reserve the right to remove your comment for any reason.</li>
-  </ol>
+  {% with tags=page.tags.all %}
+    {% if tags %}
+      <div class="d-flex">
+        <span class="me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16">
+            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0" />
+            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z" />
+          </svg>Tags:
+        </span>
+        <ul class="list-inline">
+          {% for tag in tags %}
+            <li class="list-inline-item">
+              <a class="badge text-bg-primary text-decoration-none" href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  {% endwith %}
 
-  <div class="comment mt-3 mb-5">
-    <p class="mb-4">Leave a comment:</p>
-    <div class="card pt-4">
-      {% render_comment_form for page %}
+  <hr />
+  <section>
+    <h2>Comments</h2>
+    {% get_comment_count for page as comment_count %}
+    <p>{{ comment_count }} comment{{ comment_count|pluralize }}
+      ha{{ comment_count|pluralize:'s,ve' }} been posted.</p>
+    <p>
+      Email is optional, but may be used to provide an avatar from <a href="https://www.libravatar.org/">Libravatar</a>.
+    </p>
+    <h3>Rules</h3>
+    <ol>
+      <li>Be nice.</li>
+      <li>I reserve the right to remove your comment for any reason.</li>
+    </ol>
+
+    <div class="comment mt-3 mb-5">
+      <p class="mb-4">Leave a comment:</p>
+      <div class="card pt-4">
+        {% render_comment_form for page %}
+      </div>
     </div>
-  </div>
 
-
-  {% if comment_count %}
-  <ul class="list-group list-group-flush">
-    {% render_xtdcomment_tree for page %}
-  </ul>
-  {% endif %}
-</section>
-{% endblock content %}
+    {% if comment_count %}
+      <ul class="list-group list-group-flush">
+        {% render_xtdcomment_tree for page %}
+      </ul>
+    {% endif %}
+  </section>
+{% endblock %}
