@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     "base",
     "crispy_forms",
     "crispy_bootstrap5",
-    "doodle",
     "guestbook",
     "askbox",
     "django_comments_xtd",
