@@ -9,16 +9,16 @@ from wagtail.blocks import (
     ListBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.images.blocks import ImageChooserBlock, ImageBlock
+from wagtail.images.blocks import ImageBlock
 
 
-class ImageBlock(StructBlock):
+class FigureBlock(StructBlock):
     image = ImageBlock(required=True)
     caption = CharBlock(required=False)
 
     class Meta:
         icon = "image"
-        template = "base/blocks/image_block.html"
+        template = "base/blocks/figure_block.html"
         
 class LinkButtonBlock(StructBlock):
     url = URLBlock()
@@ -54,7 +54,7 @@ class HeadingBlock(StructBlock):
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(icon="pilcrow")
-    image_block = ImageBlock()
+    figure_block = FigureBlock()
     embed_block = EmbedBlock(
         help_text="Insert a URL to embed. For example, https://www.youtube.com/watch?v=SGJFWirQ3ks",
         icon="media",

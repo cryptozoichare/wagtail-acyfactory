@@ -16,16 +16,3 @@ register_image_format(
     Format("fullwidth", ("Full width"), "richtext-image full-width img-fluid", "width-800")
 )
 register_image_format(Format('thumbnail', 'Thumbnail', 'richtext-image img-thumbnail', 'max-120x120'))
-
-# class CaptionedImageFormat(Format):
-
-#     def image_to_html(self, image, alt_text, extra_attributes=None):
-
-#         default_html = super().image_to_html(image, alt_text, extra_attributes)
-
-#         return format_html("{}<figcaption>{}</figcaption>", default_html, alt_text)
-
-
-# register_image_format(
-#     CaptionedImageFormat('captioned_fullwidth', 'Full width captioned', 'bodytext-image', 'width-750')
-# )
