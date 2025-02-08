@@ -231,4 +231,5 @@ WAGTAILIMAGES_EXTENSIONS = ["png", "jpg", "jpeg", "avif", "gif", "webp", "svg"]
 
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
         'webp': 'webp',
+        'gif': 'gif',
     }
