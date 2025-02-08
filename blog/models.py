@@ -43,6 +43,14 @@ class BlogPage(Page):
     )
     caption = RichTextField(blank=True, max_length=250)
     alt = models.CharField(blank=True, max_length=250)
+    icon = models.ForeignKey(
+        "base.CustomImage",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='blog_page_icons',
+        help_text="A square icon.",
+    )
     body = StreamField(
         BaseStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True
     )
@@ -62,6 +70,7 @@ class BlogPage(Page):
             ],
             heading="Main image",
         ),
+        FieldPanel("icon"),
         FieldPanel("intro"),
         FieldPanel("body"),
         FieldPanel("tags"),
