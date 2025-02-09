@@ -5,8 +5,8 @@
 {% block content %}
   <article>
     {% if page.icon%}
-    <div class="float-end ms-2">
-      {% image page.icon fill-100x100-c85 class="border" %}
+    <div class="float-end ms-2 border">
+      {% image page.icon fill-100x100-c85 %}
     </div>
       {% endif %}
     <h1 class="display-4">{{ page.title }}</h1>
