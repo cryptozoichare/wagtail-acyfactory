@@ -14,8 +14,8 @@
       <ul class="list-group list-group-flush">
         {% for post in blogpages %}
         {% with post=post.specific %}
-        <li class="list-group-item">
-          <a href="{% pageurl post %}">{{ post.title }}</a>
+        <li class="list-group-item d-flex justify-content-between">
+          <a href="{% pageurl post %}">{{ post.title }}</a> <span class="small text-end text-body-secondary">{{ post.first_published_at|date:'M j, Y' }}</span>
         </li>
         {% endwith %}
         {% endfor %}

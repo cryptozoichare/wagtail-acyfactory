@@ -14,7 +14,7 @@
       <p class="lead">{{ page.intro }}</p>
     {% endif %}
     <p class="small">
-      Posted <time datetime="{{ page.last_published_at|date:'c' }}">{{ page.first_published_at }}</time>
+      Posted <time datetime="{{ page.first_published_at|date:'c' }}">{{ page.first_published_at }}</time>
     </p>
 
     {% if page.image %}
