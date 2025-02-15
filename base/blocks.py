@@ -50,6 +50,13 @@ class HeadingBlock(StructBlock):
         icon = "title"
         template = "base/blocks/heading_block.html"
 
+class ImageLinkBlock(StructBlock):
+    image = ImageBlock()
+    url = URLBlock()
+
+    class Meta:
+        template = "base/blocks/image_link_block.html"
+
 
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
@@ -62,3 +69,4 @@ class BaseStreamBlock(StreamBlock):
     html_block = RawHTMLBlock()
     link_button_block = ListBlock(LinkButtonBlock,
                                   template="base/blocks/link_button_list.html",)
+    image_link_block = ImageLinkBlock()
