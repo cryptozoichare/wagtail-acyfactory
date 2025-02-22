@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
 <!-- load wagtailcore_tags by adding this: -->
-{% load wagtailcore_tags home_tags %}
+{% load wagtailcore_tags %}
+{% block extra_css %}
+<style>
+.richtext-no-margin p {
+  margin-bottom: 0;
+}
+</style>
 
+{% endblock %}
 <!-- replace everything below with: -->
 {% block content %}
 {{ page.body }}
 <hr />
+
 <div class="row row-cols-1 row-cols-md-2 g-3">
   <div class="col">
     <div class="card">
@@ -15,13 +23,30 @@
         {% for post in blogpages %}
         {% with post=post.specific %}
         <li class="list-group-item d-flex justify-content-between">
-          <a href="{% pageurl post %}">{{ post.title }}</a> <span class="small text-end text-body-secondary">{{ post.first_published_at|date:'M j, Y' }}</span>
+          <a class="me-3" href="{% pageurl post %}">{{ post.title }}</a> <span class="small text-end text-body-secondary">{{ post.first_published_at|date:'M j, Y' }}</span>
         </li>
         {% endwith %}
         {% endfor %}
       </ul>
     </div>
   </div>
-  {% todos %}
+  <div class="col">
+    <div class="card">
+      <h3 class="card-header">Latest Updates</h3>
+      <ul class="list-group list-group-flush">
+        {% if latest_updates %}
+          {% for update in latest_updates %}
+          <li class="list-group-item d-flex justify-content-between">
+            <div class="me-3"><span class="mb-0> richtext-no-margin">{{ update.update|richtext }}</span></div>
+            <span class="small text-end text-body-secondary">{{ update.date|date:'M j, Y' }}</span>
+          </li>
+          {% endfor %}
+        {% else %}
+          <li class="list-group-item">No updates available.</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
 </div>
 {% endblock %}

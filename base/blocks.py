@@ -70,3 +70,5 @@ class BaseStreamBlock(StreamBlock):
     link_button_block = ListBlock(LinkButtonBlock,
                                   template="base/blocks/link_button_list.html",)
     image_link_block = ImageLinkBlock()
+
+# class SimpleFlexWrap():
