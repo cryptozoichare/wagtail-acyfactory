@@ -22,11 +22,11 @@ class HomePage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        context['latest_updates'] = self.updates.order_by('-date')[:3]
+        context['latest_updates'] = self.updates.order_by('-id')[:3]
         blogpages = (
             BlogPage.objects.live().descendant_of(self).order_by("-first_published_at")
         )
-        context["blogpages"] = blogpages[0:6]
+        context["blogpages"] = blogpages[:3]
         return context
 
 
@@ -45,3 +45,35 @@ class Update(models.Model):
     panels = [
         FieldPanel("update"),
     ]
+
+from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger
+
+class UpdatesPage(Page):
+    intro = RichTextField(blank=True)
+    updates_per_page = 10  # You can adjust this number
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        
+        # Get all updates from the homepage
+        homepage = self.get_parent()
+        updates = homepage.updates.order_by('-id')
+
+        # Pagination
+        paginator = Paginator(updates, self.updates_per_page)
+        page = request.GET.get('page')
+        
+        try:
+            updates_page = paginator.page(page)
+        except PageNotAnInteger:
+            updates_page = paginator.page(1)
+        except EmptyPage:
+            updates_page = paginator.page(paginator.num_pages)
+
+        context['updates_page'] = updates_page
+        return context

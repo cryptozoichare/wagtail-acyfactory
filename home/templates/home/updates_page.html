@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+            <h1>{{ page.title }}</h1>
+            
+            {% if page.intro %}
+                {{ page.intro|richtext }}
+            {% endif %}
+
+            
+
+                <ul class="list-group list-group-flush">
+                {% if updates_page %}
+                    {% for update in updates_page %}
+                    <li class="list-group-item d-flex justify-content-between bg-body-tertiary pt-3">
+                        <div class="pe-3 richtext-no-margin">{{ update.update|richtext }}</div>
+                        <span class="small text-end text-body-secondary" style="min-width: 6rem">{{ update.date|date:'M j, Y' }}</span>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">No updates available.</li>
+                {% endif %}
+                </ul>
+
+                {% if updates_page.paginator.num_pages > 1 %}
+                
+                    <nav aria-label="Updates pagination">
+                        <ul class="pagination justify-content-center mb-0">
+                            {% if updates_page.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ updates_page.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link" aria-hidden="true">&laquo;</span>
+                                </li>
+                            {% endif %}
+
+                            {% for page_num in updates_page.paginator.page_range %}
+                                <li class="page-item {% if page_num == updates_page.number %}active{% endif %}">
+                                    <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if updates_page.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ updates_page.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                
+                {% endif %}
+
+{% endblock %}
