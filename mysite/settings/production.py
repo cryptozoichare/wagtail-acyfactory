@@ -15,8 +15,8 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",")
 
 CSRF_TRUSTED_ORIGINS = ["https://acyfactory.com", "https://acyfactory.nfshost.com"]
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '|/usr/bin/sendmail -t'
+EMAIL_BACKEND = 'django_sendmail_backend.backends.EmailBackend'
+SENDMAIL_BINARY = 'usr/bin/sendmail'
 
 
 LOGGING = {
