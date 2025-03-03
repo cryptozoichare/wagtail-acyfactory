@@ -1,22 +1,13 @@
 import hashlib
+
 try:
     from urllib.parse import urlencode
 except ImportError:
     from urllib import urlencode
 
-from django.contrib.contenttypes.models import ContentType
 from django import template
-from django.urls import reverse
 from django.utils.safestring import mark_safe
-
-from django_comments.models import CommentFlag
 from django_comments_xtd import get_model as get_comment_model
-from django_comments_xtd.api import frontend
-from django_comments_xtd.models import LIKEDIT_FLAG, DISLIKEDIT_FLAG
-from django_comments_xtd.utils import (
-    get_app_model_options, get_current_site_id, get_html_id_suffix
-)
-
 
 XtdComment = get_comment_model()
 

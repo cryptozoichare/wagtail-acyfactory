@@ -1,12 +1,11 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
-from wagtail.models import Page, Orderable
-from wagtail.fields import StreamField, RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 
 from base.blocks import BaseStreamBlock
 from blog.models import BlogPage
-
 
 
 class HomePage(Page):
@@ -46,8 +45,8 @@ class Update(models.Model):
         FieldPanel("update"),
     ]
 
-from django.core.paginator import Paginator
-from django.core.paginator import EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
 
 class UpdatesPage(Page):
     intro = RichTextField(blank=True)

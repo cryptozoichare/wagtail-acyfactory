@@ -1,15 +1,59 @@
 from wagtail.blocks import (
     CharBlock,
     ChoiceBlock,
+    ListBlock,
+    RawHTMLBlock,
     RichTextBlock,
     StreamBlock,
     StructBlock,
-    RawHTMLBlock,
     URLBlock,
-    ListBlock,
 )
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageBlock
+
+
+from wagtail import blocks
+from wagtail.images.blocks import ImageChooserBlock
+
+class CardBlock(blocks.StructBlock):
+    """A Bootstrap 5 Card Block"""
+    image = ImageBlock(required=False, help_text="Optional card image")
+    title = blocks.CharBlock(required=True, max_length=100)
+    text = blocks.TextBlock(required=True, help_text="Card body text")
+    footer = blocks.CharBlock(required=False, max_length=100, help_text="Optional footer text")
+
+    class Meta:
+        template = "base/blocks/card_block.html"
+        icon = "placeholder"
+        label = "Card"
+
+
+class RowBlock(blocks.StructBlock):
+    """Defines a Bootstrap row with dynamic column layout."""
+    column_classes = blocks.ChoiceBlock(
+        choices=[
+            ('row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2', '2 Columns'),
+            ('row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3', '3 Columns'),
+            ('row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4', '4 Columns')
+        ],
+        default='row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-',
+        required=True,
+    )
+    gap = blocks.ChoiceBlock(
+        choices=[
+            ('g-0', 'No gap'),
+            ('g-1', 'Small gap'),
+            ('g-3', 'Medium gap'),
+            ('g-4', 'Large gap'),
+        ],
+        default='g-3',
+        required=True,
+    )
+    cards = blocks.ListBlock(CardBlock(), label="Cards")
+
+    class Meta:
+        template = "base/blocks/row_block.html"
+
 
 
 class FigureBlock(StructBlock):
@@ -68,7 +112,9 @@ class BaseStreamBlock(StreamBlock):
     )
     html_block = RawHTMLBlock()
     link_button_block = ListBlock(LinkButtonBlock,
+                                  icon = "link-external",
                                   template="base/blocks/link_button_list.html",)
     image_link_block = ImageLinkBlock()
+    row = RowBlock()
 
 # class SimpleFlexWrap():

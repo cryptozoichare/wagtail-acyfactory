@@ -2,6 +2,7 @@
 from django.db import models
 from wagtail.admin.panels import FieldPanel
 
+
 class Question(models.Model):
     question_text = models.TextField("Question")
     answer_text = models.TextField("Answer", blank=True)
@@ -17,11 +18,13 @@ class Question(models.Model):
         FieldPanel('is_answered'),
     ]
 
-from wagtail.models import Page
 from django.shortcuts import render
-from .forms import QuestionForm
 from django.utils.decorators import method_decorator
 from honeypot.decorators import check_honeypot
+from wagtail.models import Page
+
+from .forms import QuestionForm
+
 
 @method_decorator(check_honeypot, name="serve")
 class AskQuestionPage(Page):

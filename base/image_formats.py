@@ -1,5 +1,8 @@
-from django.utils.html import format_html
-from wagtail.images.formats import Format, register_image_format, unregister_image_format
+from wagtail.images.formats import (
+    Format,
+    register_image_format,
+    unregister_image_format,
+)
 
 unregister_image_format('left')
 unregister_image_format('right')

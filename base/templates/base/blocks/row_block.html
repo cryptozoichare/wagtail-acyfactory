@@ -1,0 +1,8 @@
+{% load wagtailcore_tags %}
+<div class="row {{ self.column_classes }} {{ self.gap }}">
+    {% for card in self.cards %}
+        <div class="col">
+            {% include_block card %}  {# This ensures the correct template is used #}
+        </div>
+    {% endfor %}
+</div>

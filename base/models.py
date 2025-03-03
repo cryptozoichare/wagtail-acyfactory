@@ -1,16 +1,16 @@
 from django.db import models
-from wagtail.models import Page
 from wagtail.admin.panels import (
     FieldPanel,
 )
-from wagtail.fields import StreamField, RichTextField
 from wagtail.contrib.settings.models import (
     BaseGenericSetting,
     register_setting,
 )
+from wagtail.documents.models import AbstractDocument, Document
+from wagtail.fields import RichTextField, StreamField
+from wagtail.images.models import AbstractImage, AbstractRendition, Image
+from wagtail.models import Page
 
-from wagtail.images.models import Image, AbstractImage, AbstractRendition
-from wagtail.documents.models import Document, AbstractDocument
 from base.blocks import BaseStreamBlock
 
 
