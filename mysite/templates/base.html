@@ -11,7 +11,7 @@
     {% if request.in_preview_panel %}
       <base target="_blank" />
     {% endif %}
-    <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
+    {% comment %} <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% fullpageurl page %}">
     {% get_settings %}
@@ -23,7 +23,7 @@
     <meta property="og:image:height" content="{{ og_image.height }}">
     <meta property="og:image:alt" content="">
         {% endif %}
-    {% endwith %}
+    {% endwith %} {% endcomment %}
     
     
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
