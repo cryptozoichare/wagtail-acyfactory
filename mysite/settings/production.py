@@ -17,7 +17,7 @@ CSRF_TRUSTED_ORIGINS = ["https://acyfactory.com", "https://acyfactory.nfshost.co
 
 EMAIL_BACKEND = 'django_sendmail_backend.backends.EmailBackend'
 SENDMAIL_BINARY = 'usr/bin/sendmail'
-
+WAGTAILADMIN_BASE_URL = "https://acyfactory.com"
 
 LOGGING = {
     "version": 1,

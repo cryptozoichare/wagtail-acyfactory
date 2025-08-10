@@ -11,19 +11,21 @@
     {% if request.in_preview_panel %}
       <base target="_blank" />
     {% endif %}
-    {% comment %} <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{% fullpageurl page %}">
-    {% get_settings %}
-    {% with logo=settings.base.DesignSettings.logo %}
-        {% if logo %}
-            {% image logo fill-200x200 format-png as og_image %}
-    <meta property="og:image" content="{{ og_image.full_url }}">
-    <meta property="og:image:width" content="{{ og_image.width }}">
-    <meta property="og:image:height" content="{{ og_image.height }}">
-    <meta property="og:image:alt" content="">
-        {% endif %}
-    {% endwith %} {% endcomment %}
+{% if page %}
+  <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{% fullpageurl page %}">
+  {% get_settings %}
+  {% with logo=settings.base.DesignSettings.logo %}
+    {% if logo %}
+      {% image logo fill-200x200 format-png as og_image %}
+      <meta property="og:image" content="{{ og_image.full_url }}">
+      <meta property="og:image:width" content="{{ og_image.width }}">
+      <meta property="og:image:height" content="{{ og_image.height }}">
+      <meta property="og:image:alt" content="">
+    {% endif %}
+  {% endwith %}
+{% endif %}
     
     
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
@@ -51,7 +53,7 @@
       <div class="row justify-content-center mb-3">
         {% include 'includes/sidebar.html' %}
 
-        <div class="col-lg-8">
+        <div class="col-lg-7">
           <div class="bg-body-tertiary p-0 shadow border border-top-0 border-dark border-2 mb-3">
             <div class="p-3 mx-3">
               {% block content %}
