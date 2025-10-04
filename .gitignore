@@ -314,3 +314,4 @@ dist
 *.sh
 .bashrc
 data.json
+.github

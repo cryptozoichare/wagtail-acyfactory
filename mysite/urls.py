@@ -6,7 +6,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from blog.feeds import BlogFeed
+
 from search import views as search_views
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-    path("blog/feed/", BlogFeed()),
+    path("blog/", include("blog.urls")),
     re_path(r'^comments/', include('django_comments_xtd.urls')),
     path(
         "robots.txt",

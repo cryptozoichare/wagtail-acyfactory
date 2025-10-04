@@ -15,10 +15,10 @@ class BlogIndexPage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("intro")]
 
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         # Update context to include only published posts, ordered by reverse-chron
-        context = super().get_context(request)
-        blogpages = self.get_children().live().order_by("-first_published_at")
+        context = super().get_context(request, *args, **kwargs)
+        blogpages = self.get_children().live().order_by("-first_published_at") # pyright: ignore[reportAttributeAccessIssue]
         context["blogpages"] = blogpages
         return context
 
@@ -74,12 +74,14 @@ class BlogPage(Page):
         FieldPanel("tags"),
     ]
 
+    parent_page_types = ['blog.BlogIndexPage']
+
     def get_absolute_url(self):
         return self.full_url
 
 
 class BlogTagIndexPage(Page):
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         # Filter by tag
         tag = request.GET.get("tag")
         blogpages = BlogPage.objects.filter(tags__name=tag)
